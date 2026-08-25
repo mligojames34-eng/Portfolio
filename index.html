@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>James Chrispin Mligo — Full Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -20,13 +20,48 @@
     --line: rgba(251,246,238,0.14);
     --ink: #1c1428;
     --max: 1120px;
+
+    /* ---- theme-switchable surface tokens (light = default) ---- */
+    --bg: var(--paper);
+    --text: var(--ink);
+    --border: rgba(28,20,40,0.1);
+    --border-soft: rgba(28,20,40,0.12);
+    --header-bg: rgba(251,246,238,0.85);
+    --img-ph-bg: repeating-linear-gradient(135deg, rgba(28,20,40,0.05) 0 10px, transparent 10px 20px);
+    --img-ph-text: rgba(28,20,40,0.4);
+    --pc1: linear-gradient(150deg, #fff0ea, #fbf6ee 60%);
+    --pc2: linear-gradient(150deg, #eafaf5, #fbf6ee 60%);
+    --pc3: linear-gradient(150deg, #fdf1f7, #fbf6ee 60%);
+    --pc4: linear-gradient(150deg, #fff6e6, #fbf6ee 60%);
+    --pc1-link: #c1442c;
+    --pc2-link: #1c8a70;
+    --pc3-link: var(--magenta);
+    --pc4-link: #a3720f;
   }
+  html[data-theme="dark"]{
+    --bg: var(--night);
+    --text: var(--paper);
+    --border: rgba(251,246,238,0.14);
+    --border-soft: rgba(251,246,238,0.16);
+    --header-bg: rgba(23,17,38,0.85);
+    --img-ph-bg: repeating-linear-gradient(135deg, rgba(251,246,238,0.06) 0 10px, transparent 10px 20px);
+    --img-ph-text: rgba(251,246,238,0.4);
+    --pc1: linear-gradient(150deg, #2b1d22, var(--night) 60%);
+    --pc2: linear-gradient(150deg, #16261f, var(--night) 60%);
+    --pc3: linear-gradient(150deg, #26192a, var(--night) 60%);
+    --pc4: linear-gradient(150deg, #2a2116, var(--night) 60%);
+    --pc1-link: var(--coral);
+    --pc2-link: var(--teal);
+    --pc3-link: var(--magenta);
+    --pc4-link: var(--amber);
+  }
+  html, body{ transition:background-color .35s ease, color .35s ease; }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Space Grotesk', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
@@ -53,7 +88,7 @@
       width:34px; height:34px; border-radius:50%;
       background:linear-gradient(135deg, var(--coral), var(--amber));
       display:flex; align-items:center; justify-content:center;
-      font-family:'Fraunces', serif; font-weight:700; font-size:14px;
+      font-family:'Playfair Display', serif; font-weight:700; font-size:14px;
       color:var(--night);
     }
     .side-links{
@@ -94,9 +129,9 @@
   /* ================= NAV ================= */
   header{
     position:sticky; top:0; z-index:20;
-    background:rgba(251,246,238,0.85);
+    background:var(--header-bg);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(28,20,40,0.08);
+    border-bottom:1px solid var(--border-soft);
   }
   nav{
     display:flex; align-items:center; justify-content:space-between;
@@ -113,7 +148,7 @@
   }
   .navlinks{ display:flex; gap:34px; font-size:14px; }
   .navlinks a{
-    text-decoration:none; color:var(--ink); opacity:0.65;
+    text-decoration:none; color:var(--text); opacity:0.65;
     position:relative; padding-bottom:3px; transition:opacity .2s;
   }
   .navlinks a:hover{ opacity:1; }
@@ -132,22 +167,36 @@
   }
   .nav-cta:hover{ transform:translateY(-2px); }
 
+  .nav-actions{ display:flex; align-items:center; gap:12px; }
+  .theme-toggle{
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--border); background:none; color:var(--text);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:15px; flex-shrink:0;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), border-color .2s, color .2s;
+  }
+  .theme-toggle:hover{ border-color:var(--amber); color:var(--amber); transform:translateY(-2px) rotate(-12deg); }
+  .theme-toggle i{ transition:transform .3s; }
+  .mobile-menu-top .theme-toggle{ color:var(--paper); border-color:var(--line); }
+  .mobile-menu-top .theme-toggle:hover{ color:var(--amber); border-color:var(--amber); }
+  .mobile-menu-top-actions{ display:flex; align-items:center; gap:10px; }
+
   /* ---- mobile menu button + panel ---- */
   .menu-btn{
     display:none;
     width:40px; height:40px;
     align-items:center; justify-content:center;
-    background:none; border:1px solid rgba(28,20,40,0.18);
+    background:none; border:1px solid var(--border);
     border-radius:50%;
     cursor:pointer;
     flex-shrink:0;
   }
   .menu-btn span{
     display:block; position:relative;
-    width:16px; height:2px; background:var(--ink);
+    width:16px; height:2px; background:var(--text);
   }
   .menu-btn span::before, .menu-btn span::after{
-    content:""; position:absolute; left:0; width:16px; height:2px; background:var(--ink);
+    content:""; position:absolute; left:0; width:16px; height:2px; background:var(--text);
     transition:transform .25s, opacity .25s;
   }
   .menu-btn span::before{ top:-5px; }
@@ -180,7 +229,7 @@
   }
   .mobile-menu nav a{
     text-decoration:none; color:var(--paper);
-    font-family:'Fraunces', serif; font-weight:600;
+    font-family:'Playfair Display', serif; font-weight:600;
     font-size:clamp(32px, 10vw, 44px);
     padding:14px 0;
     border-bottom:1px solid var(--line);
@@ -236,7 +285,7 @@
   }
   .eyebrow .rule{ width:36px; height:1px; background:var(--coral); }
   h1{
-    font-family:'Fraunces', serif;
+    font-family:'Playfair Display', serif;
     font-weight:600;
     font-size:clamp(42px, 6vw, 70px);
     line-height:1.02;
@@ -295,7 +344,7 @@
     gap:10px; color:rgba(251,246,238,0.55); text-align:center; padding:20px;
   }
   .photo-placeholder .initials{
-    font-family:'Fraunces', serif; font-weight:600; font-size:52px;
+    font-family:'Playfair Display', serif; font-weight:600; font-size:52px;
     background:linear-gradient(100deg, var(--coral), var(--amber));
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
@@ -329,11 +378,11 @@
     color:var(--coral);
   }
   .label-title{
-    font-family:'Fraunces', serif; font-weight:600; font-size:36px; letter-spacing:-0.01em;
+    font-family:'Playfair Display', serif; font-weight:600; font-size:36px; letter-spacing:-0.01em;
   }
 
   /* ================= ABOUT ================= */
-  .about{ background:var(--paper); }
+  .about{ background:var(--bg); }
   .about-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; }
   .about-text p{ font-size:16.5px; line-height:1.85; opacity:0.82; margin-bottom:18px; }
   .about-text p strong{
@@ -341,10 +390,10 @@
     -webkit-background-clip:text; background-clip:text; color:transparent;
     font-weight:600;
   }
-  .facts{ border-top:1px solid rgba(28,20,40,0.12); }
+  .facts{ border-top:1px solid var(--border-soft); }
   .fact{
     display:flex; justify-content:space-between; align-items:baseline;
-    padding:16px 0; border-bottom:1px solid rgba(28,20,40,0.12); font-size:14.5px;
+    padding:16px 0; border-bottom:1px solid var(--border-soft); font-size:14.5px;
   }
   .fact dt{ opacity:0.5; font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.04em; }
   .fact dd{ font-weight:600; text-align:right; }
@@ -381,32 +430,32 @@
   .skill-card li::before{ content:"→"; color:var(--coral); font-size:14px; }
 
   /* ================= PROJECTS ================= */
-  .projects{ background:var(--paper); }
+  .projects{ background:var(--bg); }
   .project-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   .project-card{
     border-radius:20px; padding:32px;
     position:relative; overflow:hidden;
-    border:1px solid rgba(28,20,40,0.1);
-    transition:transform .25s, box-shadow .25s;
+    border:1px solid var(--border);
+    transition:transform .25s, box-shadow .25s, background .35s, border-color .35s;
   }
   .project-card:hover{ transform:translateY(-5px); box-shadow:0 18px 40px rgba(28,20,40,0.12); }
-  .pc1{ background:linear-gradient(150deg, #fff0ea, #fbf6ee 60%); }
-  .pc2{ background:linear-gradient(150deg, #eafaf5, #fbf6ee 60%); }
-  .pc3{ background:linear-gradient(150deg, #fdf1f7, #fbf6ee 60%); }
-  .pc4{ background:linear-gradient(150deg, #fff6e6, #fbf6ee 60%); }
+  .pc1{ background:var(--pc1); }
+  .pc2{ background:var(--pc2); }
+  .pc3{ background:var(--pc3); }
+  .pc4{ background:var(--pc4); }
   .p-image{
     width:calc(100% + 64px); margin:-32px -32px 22px;
     aspect-ratio:16/10;
     overflow:hidden;
     position:relative;
-    border-bottom:1px solid rgba(28,20,40,0.08);
+    border-bottom:1px solid var(--border-soft);
   }
   .p-image img{ width:100%; height:100%; object-fit:cover; }
   .p-image-placeholder{
     width:100%; height:100%;
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
-    background:repeating-linear-gradient(135deg, rgba(28,20,40,0.05) 0 10px, transparent 10px 20px);
-    color:rgba(28,20,40,0.4);
+    background:var(--img-ph-bg);
+    color:var(--img-ph-text);
     text-align:center; padding:16px;
   }
   .p-image-placeholder svg{ opacity:0.5; }
@@ -416,23 +465,23 @@
   .p-index{
     font-family:'JetBrains Mono', monospace; font-size:12.5px; opacity:0.45; margin-bottom:14px;
   }
-  .p-title{ font-family:'Fraunces', serif; font-weight:600; font-size:23px; margin-bottom:10px; }
+  .p-title{ font-family:'Playfair Display', serif; font-weight:600; font-size:23px; margin-bottom:10px; }
   .p-desc{ font-size:14.5px; line-height:1.7; opacity:0.75; margin-bottom:18px; min-height:66px; }
   .p-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
   .p-tags span{
     font-family:'JetBrains Mono', monospace; font-size:11px;
-    padding:4px 10px; border:1px solid rgba(28,20,40,0.18); border-radius:20px; opacity:0.7;
+    padding:4px 10px; border:1px solid var(--border); border-radius:20px; opacity:0.7;
   }
   .p-link{
     font-size:14px; font-weight:600; text-decoration:none;
-    display:inline-flex; align-items:center; gap:6px; color:var(--ink);
+    display:inline-flex; align-items:center; gap:6px; color:var(--text);
   }
   .p-link svg{ transition:transform .2s; }
   .p-link:hover svg{ transform:translate(3px,-3px); }
-  .pc1 .p-link{ color:#c1442c; }
-  .pc2 .p-link{ color:#1c8a70; }
-  .pc3 .p-link{ color:var(--magenta); }
-  .pc4 .p-link{ color:#a3720f; }
+  .pc1 .p-link{ color:var(--pc1-link); }
+  .pc2 .p-link{ color:var(--pc2-link); }
+  .pc3 .p-link{ color:var(--pc3-link); }
+  .pc4 .p-link{ color:var(--pc4-link); }
 
   /* ================= CONTACT ================= */
   .contact-section{
@@ -450,7 +499,7 @@
   .contact-section .wrap{ position:relative; z-index:1; padding-bottom:70px;}
   .contact-section .eyebrow{ color:var(--amber); }
   .contact-section h2{
-    font-family:'Fraunces', serif; font-weight:600;
+    font-family:'Playfair Display', serif; font-weight:600;
     font-size:clamp(36px,5vw,56px); line-height:1.05; max-width:640px;
   }
   .contact-section h2 .accent{
@@ -487,6 +536,19 @@
     .project-grid{ grid-template-columns:1fr; }
     .navlinks{ display:none; }
     .wrap{ padding:0 20px; }
+  }
+
+  /* reserve a clear gutter on the right so body copy never runs under the
+     fixed FAB stack (WhatsApp / back-to-top) on narrow phone widths */
+  @media (max-width: 600px){
+    .about .wrap, .skills .wrap, .projects .wrap, .contact-section .wrap{
+      padding-right:84px;
+    }
+  }
+  @media (max-width: 480px){
+    .about .wrap, .skills .wrap, .projects .wrap, .contact-section .wrap{
+      padding-right:74px;
+    }
   }
 
   /* ================= HERO ENTRANCE ================= */
@@ -613,15 +675,25 @@
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
     </div>
-    <a href="#contact" class="nav-cta">Say Hello</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span></button>
+    <div class="nav-actions">
+      <a href="#contact" class="nav-cta">Say Hello</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark and light mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span></button>
+    </div>
   </nav>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-top">
     <div class="mark"><span class="dot"></span>J.C.MLIGO</div>
-    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+    <div class="mobile-menu-top-actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark and light mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+    </div>
   </div>
   <nav>
     <a href="#about"><span>01</span>About</a>
@@ -651,7 +723,7 @@
       <div>
         <div class="eyebrow"><span class="rule"></span>Full Stack Developer — Dar es Salaam, Tanzania</div>
         <h1>Building software<br>that actually <span class="accent">ships.</span></h1>
-        <p class="hero-sub">I'm James Chrispin Mligo, a BSc ICT graduate from Mzumbe University. I design and build full stack web applications — from database schema to the interface people actually touch.</p>
+        <p class="hero-sub">I'm James Chrispin Mligo, a BSc ICT with Management graduate from Mzumbe University. I design and build full stack web applications — from database schema to the interface people actually touch.</p>
         <div class="hero-cta">
           <a href="#projects" class="btn btn-solid">View Projects</a>
           <a href="mailto:mligojames34@gmail.com" class="btn btn-outline">Get in Touch</a>
@@ -688,13 +760,13 @@
     <div class="label-row" data-reveal="left"><span class="label-num">01</span><span class="label-title">About</span></div>
     <div class="about-grid">
       <div class="about-text" data-reveal="up">
-        <p>I graduated with a <strong>BSc in Information and Communication Technology</strong> from Mzumbe University, and work as a <strong>full stack developer</strong> — comfortable moving between back-end architecture and front-end interfaces on the same project.</p>
+        <p>I graduated in <strong>2026</strong> with a <strong>BSc in Information and Communication Technology with Management</strong> from Mzumbe University, and work as a <strong>full stack developer</strong> — comfortable moving between back-end architecture and front-end interfaces on the same project.</p>
         <p>My work sits at the intersection of <strong>technology and business</strong>: I've built systems for real companies, and I bring a business-minded lens to how software should actually solve a problem, not just demonstrate a technique.</p>
-        <p>I'm currently expanding into <strong>React and Flutter</strong>, and preparing for the <strong>Work Readiness Competition 2026</strong>.</p>
+        <p>I'm currently expanding into <strong>React and Flutter</strong>.</p>
       </div>
       <dl class="facts" data-reveal="right">
         <div class="fact"><dt>Based in</dt><dd>Dar es Salaam, Tanzania</dd></div>
-        <div class="fact"><dt>Education</dt><dd>BSc ICT — Mzumbe University</dd></div>
+        <div class="fact"><dt>Education</dt><dd>BSc ICT with Management — Mzumbe University, 2026</dd></div>
         <div class="fact"><dt>Core Stack</dt><dd>Laravel, MySQL, PostgreSQL</dd></div>
         <div class="fact"><dt>Currently Learning</dt><dd>React, Flutter</dd></div>
         <div class="fact"><dt>Available</dt><dd>Open to opportunities</dd></div>
@@ -889,6 +961,30 @@
   window.addEventListener('scroll', toggleBackToTop, { passive:true });
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top:0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+
+  /* ---- light / dark theme toggle (defaults to system preference) ---- */
+  const root = document.documentElement;
+  const themeToggles = document.querySelectorAll('[data-theme-toggle]');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function applyTheme(theme){
+    root.setAttribute('data-theme', theme);
+    themeToggles.forEach(btn => {
+      const icon = btn.querySelector('i');
+      icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+
+  let currentTheme = systemDark.matches ? 'dark' : 'light';
+  applyTheme(currentTheme);
+
+  themeToggles.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(currentTheme);
+    });
   });
 </script>
 </body>
