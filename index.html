@@ -338,9 +338,9 @@
     width:100%; height:100%; object-fit:cover;
     border-radius:50%;
   }
-  /* placeholder state — remove this block once a real <img> is added */
+  /* placeholder state — hidden by default, JS reveals it only if the photo fails to load */
   .photo-placeholder{
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    display:none; flex-direction:column; align-items:center; justify-content:center;
     gap:10px; color:rgba(251,246,238,0.55); text-align:center; padding:20px;
   }
   .photo-placeholder .initials{
@@ -453,7 +453,7 @@
   .p-image img{ width:100%; height:100%; object-fit:cover; }
   .p-image-placeholder{
     width:100%; height:100%;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    display:none; flex-direction:column; align-items:center; justify-content:center; gap:8px;
     background:var(--img-ph-bg);
     color:var(--img-ph-text);
     text-align:center; padding:16px;
@@ -733,12 +733,8 @@
       <div class="photo-wrap">
         <div class="photo-ring">
           <div class="photo-inner">
-            <!--
-              TO ADD YOUR PHOTO:
-              1. Upload your photo file (e.g. "james.jpg") into the same GitHub repo, in an "images" folder.
-              2. Replace the .photo-placeholder div below with:
-                 <img src="images/james.jpg" alt="James Chrispin Mligo">
-            -->
+            <img src="images/james.jpg" alt="James Chrispin Mligo" class="photo-img"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="photo-placeholder">
               <div class="initials">JM</div>
               <small>Add photo:<br>images/james.jpg</small>
@@ -813,9 +809,9 @@
     <div class="project-grid">
 
       <div class="project-card pc1" data-reveal="up">
-        <!-- TO ADD SCREENSHOT: upload images/project1.jpg to the repo, then replace the
-             .p-image-placeholder div below with: <img src="images/project1.jpg" alt="LONAC Group website screenshot"> -->
         <div class="p-image">
+          <img src="images/project1.jpg" alt="LONAC Group website screenshot" class="p-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="p-image-placeholder">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             <small>Add screenshot:<br>images/project1.jpg</small>
@@ -829,9 +825,9 @@
       </div>
 
       <div class="project-card pc2" data-reveal="up">
-        <!-- TO ADD SCREENSHOT: upload images/project2.jpg to the repo, then replace the
-             .p-image-placeholder div below with: <img src="images/project2.jpg" alt="LONAC management system screenshot"> -->
         <div class="p-image">
+          <img src="images/project2.jpg" alt="LONAC management system screenshot" class="p-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="p-image-placeholder">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             <small>Add screenshot:<br>images/project2.jpg</small>
@@ -845,9 +841,9 @@
       </div>
 
       <div class="project-card pc3" data-reveal="up">
-        <!-- TO ADD SCREENSHOT: upload images/project3.jpg to the repo, then replace the
-             .p-image-placeholder div below with: <img src="images/project3.jpg" alt="Bluewave International website screenshot"> -->
         <div class="p-image">
+          <img src="images/project3.jpg" alt="Bluewave International website screenshot" class="p-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="p-image-placeholder">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             <small>Add screenshot:<br>images/project3.jpg</small>
@@ -861,9 +857,9 @@
       </div>
 
       <div class="project-card pc4" data-reveal="up">
-        <!-- TO ADD SCREENSHOT: upload images/project4.jpg to the repo, then replace the
-             .p-image-placeholder div below with: <img src="images/project4.jpg" alt="InvestBridge screenshot"> -->
         <div class="p-image">
+          <img src="images/project4.jpg" alt="InvestBridge screenshot" class="p-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="p-image-placeholder">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             <small>Add screenshot:<br>images/project4.jpg</small>
