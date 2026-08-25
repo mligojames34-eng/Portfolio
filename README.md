@@ -13,19 +13,16 @@ Skills
 Projects
 🔹 LONAC Group Website
 Website development for lonac-group.com.
-🔗 [Link to repo/site]
 
 🔹 LONAC Group Management System
 Business management system built at lonac-group.com/management.
-🔗 [Link to repo/site]
 
 🔹 Bluewave International Website
 Full design and development of Bluewaveint.co.tz.
-🔗 [Link to repo/site]
 
 🔹 InvestBridge (Final Year Project)
 Connects investors and enterprises using a recommendation algorithm.
-🔗 [Link to repo]
+🔗 [https://github.com/mligojames34-eng/InvestBridge]
 
 Contact
 • 📧 mligojames34@gmail.com
