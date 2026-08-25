@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Chrispin Mligo — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --night: #171126;
+    --night-soft: #241a38;
+    --paper: #fbf6ee;
+    --coral: #ff6b52;
+    --amber: #ffb347;
+    --magenta: #c1447e;
+    --teal: #2fbfa0;
+    --line: rgba(251,246,238,0.14);
+    --ink: #1c1428;
+    --max: 1120px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--amber); color:var(--night); }
+  a{ color:inherit; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+  img{ display:block; max-width:100%; }
+
+  /* ================= SIDEBAR ================= */
+  .side-nav{
+    display:none;
+  }
+  @media (min-width: 880px){
+    body{ margin-left:86px; }
+    .side-nav{
+      display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+      position:fixed; left:0; top:0; bottom:0; width:86px;
+      background:var(--night);
+      border-right:1px solid var(--line);
+      padding:26px 0 22px;
+      z-index:30;
+    }
+    .side-nav .side-logo{
+      width:34px; height:34px; border-radius:50%;
+      background:linear-gradient(135deg, var(--coral), var(--amber));
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Fraunces', serif; font-weight:700; font-size:14px;
+      color:var(--night);
+    }
+    .side-links{
+      display:flex; flex-direction:column; align-items:center; gap:34px;
+    }
+    .side-links a{
+      text-decoration:none; color:rgba(251,246,238,0.5);
+      font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em;
+      writing-mode:vertical-rl; text-orientation:mixed;
+      display:flex; align-items:center; gap:10px;
+      transition:color .2s;
+      position:relative;
+    }
+    .side-links a::before{
+      content:""; width:6px; height:6px; border-radius:50%;
+      background:rgba(251,246,238,0.25);
+      transition:background .2s, transform .2s;
+    }
+    .side-links a:hover{ color:var(--paper); }
+    .side-links a:hover::before{
+      background:var(--coral); transform:scale(1.3);
+    }
+    .side-socials{
+      display:flex; flex-direction:column; align-items:center; gap:18px;
+    }
+    .side-socials a{
+      width:34px; height:34px; border-radius:50%;
+      border:1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(251,246,238,0.65); text-decoration:none;
+      transition:border-color .2s, color .2s, transform .2s;
+    }
+    .side-socials a:hover{
+      border-color:var(--amber); color:var(--amber); transform:translateY(-2px);
+    }
+  }
+
+  /* ================= NAV ================= */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(251,246,238,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(28,20,40,0.08);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; max-width:var(--max); margin:0 auto;
+  }
+  .mark{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px; font-weight:500;
+    display:flex; align-items:center; gap:10px;
+  }
+  .mark .dot{
+    width:10px; height:10px; border-radius:50%;
+    background:linear-gradient(135deg, var(--coral), var(--amber));
+  }
+  .navlinks{ display:flex; gap:34px; font-size:14px; }
+  .navlinks a{
+    text-decoration:none; color:var(--ink); opacity:0.65;
+    position:relative; padding-bottom:3px; transition:opacity .2s;
+  }
+  .navlinks a:hover{ opacity:1; }
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:linear-gradient(90deg, var(--coral), var(--amber));
+    transition:width .25s;
+  }
+  .navlinks a:hover::after{ width:100%; }
+  .nav-cta{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; font-weight:500;
+    text-decoration:none;
+    padding:9px 18px; border-radius:30px;
+    background:var(--night); color:var(--paper);
+    transition:transform .2s;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); }
+
+  /* ---- mobile menu button + panel ---- */
+  .menu-btn{
+    display:none;
+    width:40px; height:40px;
+    align-items:center; justify-content:center;
+    background:none; border:1px solid rgba(28,20,40,0.18);
+    border-radius:50%;
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .menu-btn span{
+    display:block; position:relative;
+    width:16px; height:2px; background:var(--ink);
+  }
+  .menu-btn span::before, .menu-btn span::after{
+    content:""; position:absolute; left:0; width:16px; height:2px; background:var(--ink);
+    transition:transform .25s, opacity .25s;
+  }
+  .menu-btn span::before{ top:-5px; }
+  .menu-btn span::after{ top:5px; }
+  .menu-btn.open span{ background:transparent; }
+  .menu-btn.open span::before{ transform:translateY(5px) rotate(45deg); }
+  .menu-btn.open span::after{ transform:translateY(-5px) rotate(-45deg); }
+
+  .mobile-menu{
+    position:fixed; inset:0; z-index:40;
+    background:var(--night); color:var(--paper);
+    display:flex; flex-direction:column;
+    padding:24px 28px 40px;
+    transform:translateY(-100%);
+    transition:transform .35s ease;
+  }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mobile-menu-top{
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .mobile-menu-top .mark{ color:var(--paper); }
+  .mobile-menu-close{
+    width:40px; height:40px; border-radius:50%;
+    border:1px solid var(--line); background:none; color:var(--paper);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .mobile-menu nav{
+    flex:1; display:flex; flex-direction:column; justify-content:center;
+    gap:6px; padding:0;
+  }
+  .mobile-menu nav a{
+    text-decoration:none; color:var(--paper);
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(32px, 10vw, 44px);
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:baseline; gap:14px;
+  }
+  .mobile-menu nav a span{
+    font-family:'JetBrains Mono', monospace; font-size:13px; opacity:0.5;
+    font-weight:400;
+  }
+  .mobile-menu-socials{
+    display:flex; gap:16px; padding-top:24px;
+  }
+  .mobile-menu-socials a{
+    width:42px; height:42px; border-radius:50%;
+    border:1px solid var(--line); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+  }
+  @media (max-width: 879px){
+    .menu-btn{ display:flex; }
+  }
+  @media (min-width: 880px){
+    .mobile-menu{ display:none; }
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    background:var(--night);
+    color:var(--paper);
+    padding:100px 0 0;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(600px 500px at 85% 10%, rgba(255,107,82,0.35), transparent 60%),
+      radial-gradient(700px 600px at 15% 90%, rgba(47,191,160,0.22), transparent 60%),
+      radial-gradient(500px 500px at 60% 60%, rgba(255,179,71,0.14), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.15fr 0.85fr;
+    gap:50px; align-items:center;
+    padding-bottom:70px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    display:flex; align-items:center; gap:10px; margin-bottom:24px;
+    color:var(--amber);
+  }
+  .eyebrow .rule{ width:36px; height:1px; background:var(--coral); }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(42px, 6vw, 70px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+  }
+  h1 .accent{
+    font-style:italic; font-weight:500;
+    background:linear-gradient(100deg, var(--coral), var(--amber) 60%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin-top:24px; max-width:520px;
+    font-size:17.5px; line-height:1.65; opacity:0.78;
+  }
+  .hero-cta{ margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px;
+    font-weight:600; font-size:14.5px; text-decoration:none;
+    border-radius:40px; transition:transform .2s, box-shadow .2s, background .25s;
+  }
+  .btn-solid{
+    background:linear-gradient(100deg, var(--coral), var(--amber));
+    color:var(--night);
+  }
+  .btn-solid:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(255,107,82,0.35); }
+  .btn-outline{ border:1px solid rgba(251,246,238,0.35); color:var(--paper); }
+  .btn-outline:hover{ border-color:var(--paper); transform:translateY(-2px); }
+
+  /* --- photo frame --- */
+  .photo-wrap{
+    position:relative; z-index:1;
+    display:flex; justify-content:center;
+  }
+  .photo-ring{
+    position:relative;
+    width:min(320px, 80vw); aspect-ratio:1/1;
+    border-radius:50%;
+    padding:6px;
+    background:conic-gradient(from 200deg, var(--coral), var(--amber), var(--teal), var(--magenta), var(--coral));
+  }
+  .photo-inner{
+    width:100%; height:100%; border-radius:50%;
+    background:var(--night-soft);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .photo-inner img{
+    width:100%; height:100%; object-fit:cover;
+    border-radius:50%;
+  }
+  /* placeholder state — remove this block once a real <img> is added */
+  .photo-placeholder{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; color:rgba(251,246,238,0.55); text-align:center; padding:20px;
+  }
+  .photo-placeholder .initials{
+    font-family:'Fraunces', serif; font-weight:600; font-size:52px;
+    background:linear-gradient(100deg, var(--coral), var(--amber));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .photo-placeholder small{
+    font-family:'JetBrains Mono', monospace; font-size:11px; line-height:1.5; opacity:0.8;
+  }
+  .photo-badge{
+    position:absolute; bottom:6px; right:6px;
+    background:var(--teal); color:var(--night);
+    font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:600;
+    padding:6px 12px; border-radius:20px;
+    border:3px solid var(--night);
+  }
+
+  .stack-strip{
+    position:relative; z-index:1;
+    border-top:1px solid var(--line);
+    padding:22px 0;
+    display:flex; flex-wrap:wrap; gap:0;
+  }
+  .stack-strip span{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    padding:0 22px 0 0; opacity:0.55;
+  }
+
+  /* ================= SECTION SHELL ================= */
+  .section{ padding:90px 0; }
+  .label-row{ display:flex; align-items:baseline; gap:16px; margin-bottom:50px; }
+  .label-num{
+    font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600;
+    color:var(--coral);
+  }
+  .label-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:36px; letter-spacing:-0.01em;
+  }
+
+  /* ================= ABOUT ================= */
+  .about{ background:var(--paper); }
+  .about-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; }
+  .about-text p{ font-size:16.5px; line-height:1.85; opacity:0.82; margin-bottom:18px; }
+  .about-text p strong{
+    background:linear-gradient(100deg, var(--coral), var(--magenta));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-weight:600;
+  }
+  .facts{ border-top:1px solid rgba(28,20,40,0.12); }
+  .fact{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:16px 0; border-bottom:1px solid rgba(28,20,40,0.12); font-size:14.5px;
+  }
+  .fact dt{ opacity:0.5; font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.04em; }
+  .fact dd{ font-weight:600; text-align:right; }
+
+  /* ================= SKILLS ================= */
+  .skills{ background:var(--night); color:var(--paper); }
+  .skills .label-num{ color:var(--amber); }
+  .skill-groups{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .skill-card{
+    border:1px solid var(--line); border-radius:16px; padding:28px;
+    position:relative; overflow:hidden;
+    transition:border-color .25s, transform .25s;
+  }
+  .skill-card:hover{ transform:translateY(-4px); border-color:rgba(255,179,71,0.5); }
+  .skill-card::before{
+    content:""; position:absolute; top:-40px; right:-40px; width:120px; height:120px;
+    border-radius:50%; opacity:0.18; filter:blur(10px);
+  }
+  .skill-card.c1::before{ background:var(--coral); }
+  .skill-card.c2::before{ background:var(--teal); }
+  .skill-card.c3::before{ background:var(--magenta); }
+  .skill-card h3{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.07em; color:var(--amber); margin-bottom:20px; position:relative;
+    display:flex; align-items:center; gap:10px;
+  }
+  .skill-card h3 i{ font-size:15px; }
+  .skill-card ul{ list-style:none; position:relative; }
+  .skill-card li{
+    font-size:16px; padding:9px 0; border-top:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .skill-card li:first-child{ border-top:none; }
+  .skill-card li::before{ content:"→"; color:var(--coral); font-size:14px; }
+
+  /* ================= PROJECTS ================= */
+  .projects{ background:var(--paper); }
+  .project-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .project-card{
+    border-radius:20px; padding:32px;
+    position:relative; overflow:hidden;
+    border:1px solid rgba(28,20,40,0.1);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .project-card:hover{ transform:translateY(-5px); box-shadow:0 18px 40px rgba(28,20,40,0.12); }
+  .pc1{ background:linear-gradient(150deg, #fff0ea, #fbf6ee 60%); }
+  .pc2{ background:linear-gradient(150deg, #eafaf5, #fbf6ee 60%); }
+  .pc3{ background:linear-gradient(150deg, #fdf1f7, #fbf6ee 60%); }
+  .pc4{ background:linear-gradient(150deg, #fff6e6, #fbf6ee 60%); }
+  .p-image{
+    width:calc(100% + 64px); margin:-32px -32px 22px;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    position:relative;
+    border-bottom:1px solid rgba(28,20,40,0.08);
+  }
+  .p-image img{ width:100%; height:100%; object-fit:cover; }
+  .p-image-placeholder{
+    width:100%; height:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    background:repeating-linear-gradient(135deg, rgba(28,20,40,0.05) 0 10px, transparent 10px 20px);
+    color:rgba(28,20,40,0.4);
+    text-align:center; padding:16px;
+  }
+  .p-image-placeholder svg{ opacity:0.5; }
+  .p-image-placeholder small{
+    font-family:'JetBrains Mono', monospace; font-size:11px; line-height:1.5;
+  }
+  .p-index{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; opacity:0.45; margin-bottom:14px;
+  }
+  .p-title{ font-family:'Fraunces', serif; font-weight:600; font-size:23px; margin-bottom:10px; }
+  .p-desc{ font-size:14.5px; line-height:1.7; opacity:0.75; margin-bottom:18px; min-height:66px; }
+  .p-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .p-tags span{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    padding:4px 10px; border:1px solid rgba(28,20,40,0.18); border-radius:20px; opacity:0.7;
+  }
+  .p-link{
+    font-size:14px; font-weight:600; text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px; color:var(--ink);
+  }
+  .p-link svg{ transition:transform .2s; }
+  .p-link:hover svg{ transform:translate(3px,-3px); }
+  .pc1 .p-link{ color:#c1442c; }
+  .pc2 .p-link{ color:#1c8a70; }
+  .pc3 .p-link{ color:var(--magenta); }
+  .pc4 .p-link{ color:#a3720f; }
+
+  /* ================= CONTACT ================= */
+  .contact-section{
+    padding:100px 0 0;
+    background:var(--night); color:var(--paper);
+    position:relative; overflow:hidden;
+  }
+  .contact-section::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(800px 500px at 20% 20%, rgba(255,107,82,0.25), transparent 60%),
+               radial-gradient(700px 500px at 80% 80%, rgba(47,191,160,0.2), transparent 60%);
+    pointer-events:none;
+  }
+  .contact-section .wrap{ position:relative; z-index:1; padding-bottom:70px;}
+  .contact-section .eyebrow{ color:var(--amber); }
+  .contact-section h2{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(36px,5vw,56px); line-height:1.05; max-width:640px;
+  }
+  .contact-section h2 .accent{
+    font-style:italic;
+    background:linear-gradient(100deg, var(--coral), var(--amber));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .contact-links{ margin-top:44px; display:flex; flex-wrap:wrap; gap:16px; }
+  .contact-links a{
+    text-decoration:none; font-size:15.5px; font-weight:600;
+    color:var(--paper);
+    display:flex; align-items:center; gap:10px;
+    padding:14px 22px; border-radius:40px;
+    border:1px solid var(--line);
+    transition:border-color .2s, transform .2s, background .2s;
+  }
+  .contact-links a:hover{
+    border-color:var(--amber); transform:translateY(-2px);
+    background:rgba(255,179,71,0.08);
+  }
+  footer{
+    position:relative; z-index:1;
+    border-top:1px solid var(--line);
+    padding:24px 0; font-size:12.5px;
+    font-family:'JetBrains Mono', monospace; opacity:0.55;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 880px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .photo-wrap{ order:-1; margin-bottom:10px; }
+    .about-grid{ grid-template-columns:1fr; gap:36px; }
+    .skill-groups{ grid-template-columns:1fr; }
+    .project-grid{ grid-template-columns:1fr; }
+    .navlinks{ display:none; }
+    .wrap{ padding:0 20px; }
+  }
+
+  /* ================= HERO ENTRANCE ================= */
+  @keyframes fadeUpIn{
+    from{ opacity:0; transform:translateY(26px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @keyframes scaleRotateIn{
+    from{ opacity:0; transform:scale(.82) rotate(-8deg); }
+    to{ opacity:1; transform:scale(1) rotate(0deg); }
+  }
+  .hero .eyebrow{ opacity:0; animation:fadeUpIn .8s cubic-bezier(.16,.8,.24,1) .15s forwards; }
+  .hero h1{ opacity:0; animation:fadeUpIn .9s cubic-bezier(.16,.8,.24,1) .3s forwards; }
+  .hero .hero-sub{ opacity:0; animation:fadeUpIn .9s cubic-bezier(.16,.8,.24,1) .45s forwards; }
+  .hero .hero-cta{ opacity:0; animation:fadeUpIn .9s cubic-bezier(.16,.8,.24,1) .6s forwards; }
+  .hero .photo-wrap{ opacity:0; animation:scaleRotateIn 1s cubic-bezier(.16,.8,.24,1) .35s forwards; }
+  .stack-strip span{ opacity:0; animation:fadeUpIn .6s ease forwards; }
+  .stack-strip span:nth-child(1){ animation-delay:.75s; }
+  .stack-strip span:nth-child(2){ animation-delay:.83s; }
+  .stack-strip span:nth-child(3){ animation-delay:.91s; }
+  .stack-strip span:nth-child(4){ animation-delay:.99s; }
+  .stack-strip span:nth-child(5){ animation-delay:1.07s; }
+  .stack-strip span:nth-child(6){ animation-delay:1.15s; }
+  .stack-strip span:nth-child(7){ animation-delay:1.23s; }
+
+  /* ================= SCROLL REVEAL (in + out) ================= */
+  [data-reveal]{
+    transition:opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1);
+    will-change:opacity, transform;
+    opacity:0;
+  }
+  [data-reveal="up"]{ transform:translateY(46px); }
+  [data-reveal="left"]{ transform:translateX(-46px); }
+  [data-reveal="right"]{ transform:translateX(46px); }
+  [data-reveal="scale"]{ transform:scale(.88); }
+  [data-reveal].in-view{ opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .photo-ring{ animation:none; }
+    .hero .eyebrow, .hero h1, .hero .hero-sub, .hero .hero-cta, .hero .photo-wrap, .stack-strip span{
+      animation:none !important; opacity:1 !important; transform:none !important;
+    }
+    [data-reveal]{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .fab-pulse::before, .fab-pulse::after{ animation:none !important; display:none; }
+    *{ transition:none !important; }
+  }
+
+  /* ================= FLOATING ACTION BUTTONS (bottom-right) ================= */
+  .fab-stack{
+    position:fixed; right:22px; bottom:22px; z-index:50;
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .fab{
+    position:relative;
+    width:54px; height:54px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; text-decoration:none; border:none; cursor:pointer;
+    box-shadow:0 12px 28px rgba(28,20,40,0.3), 0 3px 8px rgba(28,20,40,0.2);
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  }
+  .fab:hover{
+    transform:translateY(-6px) scale(1.07);
+    box-shadow:0 20px 38px rgba(28,20,40,0.36), 0 6px 14px rgba(28,20,40,0.22);
+  }
+  .fab-whatsapp{ background:#25D366; color:#fff; }
+  .fab-top{
+    background:var(--night); color:var(--paper);
+    opacity:0; transform:translateY(14px) scale(.8); pointer-events:none;
+  }
+  .fab-top.visible{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+
+  /* growing circle rings that pulse outward to catch attention */
+  .fab-pulse::before, .fab-pulse::after{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    border:2px solid currentColor; opacity:0; pointer-events:none;
+    animation:fabPulseGrow 2.6s cubic-bezier(0,.55,.45,1) infinite;
+  }
+  .fab-pulse::after{ animation-delay:1.3s; }
+  .fab-whatsapp.fab-pulse::before, .fab-whatsapp.fab-pulse::after{ border-color:#25D366; }
+  .fab-top.fab-pulse::before, .fab-top.fab-pulse::after{ border-color:var(--amber); }
+  @keyframes fabPulseGrow{
+    0%{ transform:scale(1); opacity:.55; }
+    100%{ transform:scale(2); opacity:0; }
+  }
+
+  @media (max-width:480px){
+    .fab-stack{ right:14px; bottom:14px; gap:10px; }
+    .fab{ width:48px; height:48px; font-size:19px; }
+  }
+</style>
+</head>
+<body>
+
+<aside class="side-nav">
+  <div class="side-logo">J</div>
+  <nav class="side-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="side-socials">
+    <a href="mailto:mligojames34@gmail.com" title="Email" aria-label="Email">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+    <a href="https://wa.me/255688787438" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+255699794281" title="Phone" aria-label="Phone">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+    <a href="https://github.com/mligojames34-eng" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </div>
+</aside>
+
+<header>
+  <nav>
+    <div class="mark"><span class="dot"></span>J.C.MLIGO</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </div>
+    <a href="#contact" class="nav-cta">Say Hello</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span></button>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <div class="mark"><span class="dot"></span>J.C.MLIGO</div>
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+  </div>
+  <nav>
+    <a href="#about"><span>01</span>About</a>
+    <a href="#skills"><span>02</span>Skills</a>
+    <a href="#projects"><span>03</span>Projects</a>
+    <a href="#contact"><span>04</span>Contact</a>
+  </nav>
+  <div class="mobile-menu-socials">
+    <a href="mailto:mligojames34@gmail.com" aria-label="Email">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+    <a href="https://wa.me/255688787438" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+255699794281" aria-label="Phone">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+    <a href="https://github.com/mligojames34-eng" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>Full Stack Developer — Dar es Salaam, Tanzania</div>
+        <h1>Building software<br>that actually <span class="accent">ships.</span></h1>
+        <p class="hero-sub">I'm James Chrispin Mligo, a BSc ICT graduate from Mzumbe University. I design and build full stack web applications — from database schema to the interface people actually touch.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-solid">View Projects</a>
+          <a href="mailto:mligojames34@gmail.com" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="photo-wrap">
+        <div class="photo-ring">
+          <div class="photo-inner">
+            <!--
+              TO ADD YOUR PHOTO:
+              1. Upload your photo file (e.g. "james.jpg") into the same GitHub repo, in an "images" folder.
+              2. Replace the .photo-placeholder div below with:
+                 <img src="images/james.jpg" alt="James Chrispin Mligo">
+            -->
+            <div class="photo-placeholder">
+              <div class="initials">JM</div>
+              <small>Add photo:<br>images/james.jpg</small>
+            </div>
+          </div>
+        </div>
+        <div class="photo-badge">● Open to work</div>
+      </div>
+    </div>
+
+    <div class="stack-strip">
+      <span>LARAVEL</span><span>PHP</span><span>MYSQL</span><span>POSTGRESQL</span><span>OJS FRAMEWORK</span><span>REACT (LEARNING)</span><span>FLUTTER (LEARNING)</span>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="wrap">
+    <div class="label-row" data-reveal="left"><span class="label-num">01</span><span class="label-title">About</span></div>
+    <div class="about-grid">
+      <div class="about-text" data-reveal="up">
+        <p>I graduated with a <strong>BSc in Information and Communication Technology</strong> from Mzumbe University, and work as a <strong>full stack developer</strong> — comfortable moving between back-end architecture and front-end interfaces on the same project.</p>
+        <p>My work sits at the intersection of <strong>technology and business</strong>: I've built systems for real companies, and I bring a business-minded lens to how software should actually solve a problem, not just demonstrate a technique.</p>
+        <p>I'm currently expanding into <strong>React and Flutter</strong>, and preparing for the <strong>Work Readiness Competition 2026</strong>.</p>
+      </div>
+      <dl class="facts" data-reveal="right">
+        <div class="fact"><dt>Based in</dt><dd>Dar es Salaam, Tanzania</dd></div>
+        <div class="fact"><dt>Education</dt><dd>BSc ICT — Mzumbe University</dd></div>
+        <div class="fact"><dt>Core Stack</dt><dd>Laravel, MySQL, PostgreSQL</dd></div>
+        <div class="fact"><dt>Currently Learning</dt><dd>React, Flutter</dd></div>
+        <div class="fact"><dt>Available</dt><dd>Open to opportunities</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section skills" id="skills">
+  <div class="wrap">
+    <div class="label-row" data-reveal="left"><span class="label-num">02</span><span class="label-title">Skills</span></div>
+    <div class="skill-groups">
+      <div class="skill-card c1" data-reveal="up">
+        <h3><i class="fa-solid fa-server"></i>Back-End</h3>
+        <ul>
+          <li>Laravel (PHP)</li>
+          <li>OJS Framework</li>
+          <li>REST API Design</li>
+        </ul>
+      </div>
+      <div class="skill-card c2" data-reveal="up">
+        <h3><i class="fa-solid fa-database"></i>Databases</h3>
+        <ul>
+          <li>MySQL</li>
+          <li>PostgreSQL</li>
+          <li>Schema Design</li>
+        </ul>
+      </div>
+      <div class="skill-card c3" data-reveal="up">
+        <h3><i class="fa-solid fa-mobile-screen-button"></i>Front-End &amp; Mobile</h3>
+        <ul>
+          <li>HTML / CSS / JS</li>
+          <li>React (learning)</li>
+          <li>Flutter (learning)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section projects" id="projects">
+  <div class="wrap">
+    <div class="label-row" data-reveal="left"><span class="label-num">03</span><span class="label-title">Projects</span></div>
+    <div class="project-grid">
+
+      <div class="project-card pc1" data-reveal="up">
+        <!-- TO ADD SCREENSHOT: upload images/project1.jpg to the repo, then replace the
+             .p-image-placeholder div below with: <img src="images/project1.jpg" alt="LONAC Group website screenshot"> -->
+        <div class="p-image">
+          <div class="p-image-placeholder">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <small>Add screenshot:<br>images/project1.jpg</small>
+          </div>
+        </div>
+        <div class="p-index">01 / Client Project</div>
+        <div class="p-title">LONAC Group — Website</div>
+        <div class="p-desc">Full website development for LONAC Group, built to represent the company's services and brand online.</div>
+        <div class="p-tags"><span>Web Development</span></div>
+        <a class="p-link" href="https://lonac-group.com" target="_blank" rel="noopener">Visit Site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+      </div>
+
+      <div class="project-card pc2" data-reveal="up">
+        <!-- TO ADD SCREENSHOT: upload images/project2.jpg to the repo, then replace the
+             .p-image-placeholder div below with: <img src="images/project2.jpg" alt="LONAC management system screenshot"> -->
+        <div class="p-image">
+          <div class="p-image-placeholder">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <small>Add screenshot:<br>images/project2.jpg</small>
+          </div>
+        </div>
+        <div class="p-index">02 / Client Project</div>
+        <div class="p-title">LONAC Group — Management System</div>
+        <div class="p-desc">A business management system built for LONAC Group to handle internal operations and workflows.</div>
+        <div class="p-tags"><span>Full Stack</span><span>Business System</span></div>
+        <a class="p-link" href="https://lonac-group.com/management" target="_blank" rel="noopener">Visit Site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+      </div>
+
+      <div class="project-card pc3" data-reveal="up">
+        <!-- TO ADD SCREENSHOT: upload images/project3.jpg to the repo, then replace the
+             .p-image-placeholder div below with: <img src="images/project3.jpg" alt="Bluewave International website screenshot"> -->
+        <div class="p-image">
+          <div class="p-image-placeholder">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <small>Add screenshot:<br>images/project3.jpg</small>
+          </div>
+        </div>
+        <div class="p-index">03 / Client Project</div>
+        <div class="p-title">Bluewave International — Website</div>
+        <div class="p-desc">Full design and development of the Bluewave International website, from concept through deployment.</div>
+        <div class="p-tags"><span>Design</span><span>Web Development</span></div>
+        <a class="p-link" href="https://bluewaveint.co.tz" target="_blank" rel="noopener">Visit Site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+      </div>
+
+      <div class="project-card pc4" data-reveal="up">
+        <!-- TO ADD SCREENSHOT: upload images/project4.jpg to the repo, then replace the
+             .p-image-placeholder div below with: <img src="images/project4.jpg" alt="InvestBridge screenshot"> -->
+        <div class="p-image">
+          <div class="p-image-placeholder">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <small>Add screenshot:<br>images/project4.jpg</small>
+          </div>
+        </div>
+        <div class="p-index">04 / Academic Project</div>
+        <div class="p-title">InvestBridge — Final Year Project</div>
+        <div class="p-desc">Connects investors and enterprises using a recommendation algorithm, matching capital with opportunity based on fit.</div>
+        <div class="p-tags"><span>Laravel</span><span>Recommendation Algorithm</span></div>
+        <a class="p-link" href="https://github.com/mligojames34-eng/InvestBridge" target="_blank" rel="noopener">View Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal="left"><span class="rule" style="background:var(--coral)"></span>Let's work together</div>
+    <h2 data-reveal="up">Have a project in mind?<br><span class="accent">Let's build it.</span></h2>
+    <div class="contact-links" data-reveal="scale">
+      <a href="mailto:mligojames34@gmail.com"><i class="fa-solid fa-envelope"></i> mligojames34@gmail.com</a>
+      <a href="https://wa.me/255688787438" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="tel:+255699794281"><i class="fa-solid fa-phone"></i> +255 699 794 281</a>
+      <a href="https://github.com/mligojames34-eng" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <footer>
+      <span>© 2026 James Chrispin Mligo</span>
+      <span>Dar es Salaam, Tanzania</span>
+    </footer>
+  </div>
+</section>
+
+<div class="fab-stack">
+  <a href="https://wa.me/255688787438" target="_blank" rel="noopener" class="fab fab-whatsapp fab-pulse" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <button class="fab fab-top fab-pulse" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+  function openMenu(){
+    mobileMenu.classList.add('open');
+    menuBtn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    menuBtn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  mobileMenuClose.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', closeMenu));
+
+  /* ---- scroll reveal: in-animation on enter, out-animation on exit ---- */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    // stagger cards within the same group (skills, projects) so they cascade in
+    ['.skill-groups', '.project-grid'].forEach(sel => {
+      const group = document.querySelector(sel);
+      if (!group) return;
+      Array.from(group.children).forEach((child, i) => {
+        child.style.transitionDelay = (i * 0.12) + 's';
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in-view'));
+  }
+
+  /* ---- floating action buttons: back-to-top visibility + scroll action ---- */
+  const backToTop = document.getElementById('backToTop');
+  const toggleBackToTop = () => backToTop.classList.toggle('visible', window.scrollY > 480);
+  toggleBackToTop();
+  window.addEventListener('scroll', toggleBackToTop, { passive:true });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top:0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+</script>
+</body>
+</html>
