@@ -148,6 +148,13 @@
     width:10px; height:10px; border-radius:50%;
     background:linear-gradient(135deg, var(--coral), var(--amber));
   }
+  .mark .mark-avatar{
+    width:26px; height:26px; border-radius:50%;
+    object-fit:cover; object-position:center 15%;
+    border:1.5px solid transparent;
+    background:linear-gradient(135deg, var(--coral), var(--amber));
+    padding:1.5px;
+  }
   .navlinks{ display:flex; gap:34px; font-size:14px; }
   .navlinks a{
     text-decoration:none; color:var(--text); opacity:0.65;
@@ -674,7 +681,7 @@
 
 <header>
   <nav>
-    <div class="mark"><span class="dot"></span>J.C.MLIGO</div>
+    <div class="mark"><img src="images/james.jpg" alt="" class="mark-avatar">J.C.MLIGO</div>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -692,7 +699,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-top">
-    <div class="mark"><span class="dot"></span>J.C.MLIGO</div>
+    <div class="mark"><img src="images/james.jpg" alt="" class="mark-avatar">J.C.MLIGO</div>
     <div class="mobile-menu-top-actions">
       <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark and light mode">
         <i class="fa-solid fa-moon"></i>
