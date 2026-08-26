@@ -37,6 +37,7 @@
     --pc2-link: #1c8a70;
     --pc3-link: var(--magenta);
     --pc4-link: #a3720f;
+    --p-frame-bg: #f0e9de;
   }
   html[data-theme="dark"]{
     --bg: var(--night);
@@ -46,6 +47,7 @@
     --header-bg: rgba(23,17,38,0.85);
     --img-ph-bg: repeating-linear-gradient(135deg, rgba(251,246,238,0.06) 0 10px, transparent 10px 20px);
     --img-ph-text: rgba(251,246,238,0.4);
+    --p-frame-bg: #1f1830;
     --pc1: linear-gradient(150deg, #2b1d22, var(--night) 60%);
     --pc2: linear-gradient(150deg, #16261f, var(--night) 60%);
     --pc3: linear-gradient(150deg, #26192a, var(--night) 60%);
@@ -449,8 +451,11 @@
     overflow:hidden;
     position:relative;
     border-bottom:1px solid var(--border-soft);
+    background:var(--p-frame-bg);
+    display:flex; align-items:center; justify-content:center;
+    padding:14px;
   }
-  .p-image img{ width:100%; height:100%; object-fit:cover; }
+  .p-image img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
   .p-image-placeholder{
     width:100%; height:100%;
     display:none; flex-direction:column; align-items:center; justify-content:center; gap:8px;
