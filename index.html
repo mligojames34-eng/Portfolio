@@ -207,6 +207,12 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .scard{grid-column:span 2}.scard:nth-child(n+4){grid-column:span 3}
 @media(max-width:899px){.scards{grid-template-columns:minmax(0,1fr)}.scard,.scard:nth-child(n+4){grid-column:auto}}
 @media(hover:none){.cur{display:none}}
+
+/* --- fix: hero tagline ran behind the portrait on mobile --- */
+@media(max-width:899px){
+ .hero>.tag{padding-right:calc(30vw + 1.2rem);font-size:.66rem;letter-spacing:.16em;line-height:1.9;overflow-wrap:anywhere}
+ .hero .name{margin-top:5.5rem}
+}
 </style></head><body>
 <div class="ld"><div class="ld-t"></div><div class="ld-b"></div><div class="ld-c"><div class="ld-n">000</div><div class="tag">James Chrispin Mligo</div></div></div>
 <div class="cur"></div><div class="pg"></div><div class="grain"></div>
