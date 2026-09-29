@@ -2,10 +2,10 @@
 <title>James Chrispin Mligo — Full Stack Developer</title>
 <meta name="description" content="James Chrispin Mligo — full stack developer in Dar es Salaam, Tanzania. Laravel, MySQL, PostgreSQL, React and Flutter.">
 <style>
-:root{--bg:#0a0a0a;--fg:#efeae2;--gold:#c9a96a;--mut:color-mix(in srgb,var(--fg) 52%,transparent);--line:color-mix(in srgb,var(--fg) 16%,transparent);--f:Arial,"Helvetica Neue",Helvetica,sans-serif}
+:root{--bg:#fa6601;--fg:#ffffff;--gold:#ffffff;--mut:color-mix(in srgb,var(--fg) 74%,transparent);--line:color-mix(in srgb,var(--fg) 26%,transparent);--f:Arial,"Helvetica Neue",Helvetica,sans-serif}
 *,*:before,*:after{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--fg);font:400 1rem/1.7 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::selection{background:var(--gold);color:#0a0a0a}
+::selection{background:var(--fg);color:var(--bg)}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 h1,h2,h3,.disp{font-family:var(--f);font-weight:400;letter-spacing:-.05em;line-height:.92}
 .wd{display:inline-block;white-space:nowrap}.ch{display:inline-block;will-change:transform}
@@ -13,24 +13,24 @@ h1,h2,h3,.disp{font-family:var(--f);font-weight:400;letter-spacing:-.05em;line-h
 .tag{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .ld{position:fixed;inset:0;z-index:100}
-.ld-t,.ld-b{position:absolute;left:0;right:0;height:50.5%;background:#0a0a0a}.ld-t{top:0}.ld-b{bottom:0}
-.ld-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#efeae2;z-index:2;gap:1.2rem}
-.ld-n{font:400 clamp(4rem,14vw,10rem)/1 var(--f);letter-spacing:-.06em}.ld-c .tag{color:var(--gold)}
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(1.5rem + env(safe-area-inset-top,0px)) 5vw 1.5rem;color:#fff;mix-blend-mode:difference}
+.ld-t,.ld-b{position:absolute;left:0;right:0;height:50.5%;background:#fa6601}.ld-t{top:0}.ld-b{bottom:0}
+.ld-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:2;gap:1.2rem}
+.ld-n{font:400 clamp(4rem,14vw,10rem)/1 var(--f);letter-spacing:-.06em}.ld-c .tag{color:#fff}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(1.5rem + env(safe-area-inset-top,0px)) 5vw 1.5rem;color:var(--fg)}
 .logo{font-size:.74rem;letter-spacing:.34em;text-transform:uppercase}
 .nav ul{display:flex;gap:2.6rem;list-style:none;padding:0;font-size:.68rem;text-transform:uppercase;letter-spacing:.24em}
-.nav li a{position:relative;padding-bottom:4px}.nav li a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:#fff;transform:scaleX(0);transform-origin:100% 50%;transition:transform .5s cubic-bezier(.16,1,.3,1)}.nav li a:hover:after{transform:scaleX(1);transform-origin:0 50%}
-.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#c9a96a;margin-right:.8rem;animation:pl 2.4s infinite}@keyframes pl{50%{opacity:.2}}
+.nav li a{position:relative;padding-bottom:4px}.nav li a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--fg);transform:scaleX(0);transform-origin:100% 50%;transition:transform .5s cubic-bezier(.16,1,.3,1)}.nav li a:hover:after{transform:scaleX(1);transform-origin:0 50%}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--fg);margin-right:.8rem;animation:pl 2.4s infinite}@keyframes pl{50%{opacity:.2}}
 .hero{min-height:100svh;padding:20vh 5vw 5vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 .name{font-size:clamp(4.4rem,19vw,19rem);line-height:.84;letter-spacing:-.065em;margin:3rem 0 3rem;cursor:default}
 .name .big{display:block}.name .l2{padding-left:11vw}
-.portrait{position:absolute;right:5vw;top:19vh;width:clamp(130px,15vw,230px);aspect-ratio:3/4;overflow:hidden;background:#151515}
-.portrait:after{content:"";position:absolute;inset:10px;border:1px solid rgba(239,234,226,.35);pointer-events:none}
+.pf{position:absolute;right:5vw;top:19vh;width:clamp(130px,15vw,230px);z-index:2}.portrait{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:#d85700}
+.portrait:after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.6);pointer-events:none}
 .portrait img,.about-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:filter 1.2s}
 .portrait:hover img,.about-photo:hover img{filter:grayscale(0)}
-.rule{height:1px;background:var(--gold);width:100%}
+.rule{height:1px;background:var(--acc);width:100%}
 .hero-meta{display:grid;grid-template-columns:1fr 1.5fr auto;gap:4vw;align-items:end;padding-top:2rem}
-.role{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);min-height:1.8em}
+.role{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--acc);min-height:1.8em}
 .hero-meta p{color:var(--mut);max-width:520px;font-size:1.02rem}
 .cta{display:flex;gap:.8rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:1.05rem 2.1rem;border:1px solid color-mix(in srgb,var(--fg) 45%,transparent);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;transition:background .5s,color .5s,border-color .5s}
@@ -41,41 +41,66 @@ h1,h2,h3,.disp{font-family:var(--f);font-weight:400;letter-spacing:-.05em;line-h
 .sec{padding:18vh 5vw;position:relative}
 .st{font-size:clamp(2.6rem,7.4vw,7rem);margin:1.6rem 0 4.5rem;max-width:14ch}
 .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:7vw;align-items:start}
-.about-photo{aspect-ratio:4/5;overflow:hidden;position:sticky;top:12vh;background:#ddd}
+.about-photo{aspect-ratio:4/5;overflow:hidden;position:sticky;top:12vh;background:#f3e3d3}
 .about-text{font:400 clamp(1.3rem,2.3vw,2.1rem)/1.4 var(--f);letter-spacing:-.025em}
 .about-text .wd{margin-right:.25em}
 .facts{margin-top:5rem}.fact{padding:1.3rem 0;display:grid;grid-template-columns:12rem 1fr;gap:1rem;position:relative}
 .fact i{position:absolute;top:0;left:0;right:0;height:1px;background:var(--line);transform-origin:0 50%}
-.srow{padding:3vh 0;overflow:hidden}.srow .tag{padding:0 5vw;color:var(--gold)}
+.srow{padding:3vh 0;overflow:hidden}.srow .tag{padding:0 5vw;color:var(--fg)}
 .strip{display:inline-block;white-space:nowrap;font:400 clamp(4rem,12vw,11rem)/1.1 var(--f);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--fg) 70%,transparent);will-change:transform;transition:color .7s,-webkit-text-stroke-color .7s}
-.srow:hover .strip{color:var(--gold);-webkit-text-stroke-color:var(--gold)}
+.srow:hover .strip{color:var(--fg);-webkit-text-stroke-color:var(--fg)}
 .projects{padding:14vh 0 0}.projects .wrap>.st{margin-bottom:6vh}
 .proj{position:sticky;top:0;height:100svh;display:flex;align-items:center;padding:0 3vw}
-.pin{width:100%;display:grid;grid-template-columns:1.4fr 1fr;gap:4vw;background:#111;color:#efeae2;border:1px solid rgba(239,234,226,.12);padding:1.4vw;transform-origin:50% 0}
-.pim{overflow:hidden;aspect-ratio:16/9.6;background:#1a1a1a}
+.pin{width:100%;display:grid;grid-template-columns:1.4fr 1fr;gap:4vw;background:#fa6601;color:#fff;--acc:#fff;--fg:#fff;--line:rgba(255,255,255,.35);padding:1.4vw;box-shadow:0 30px 60px -30px rgba(90,34,0,.45);transform-origin:50% 0}
+.pim{overflow:hidden;aspect-ratio:16/9.6;background:#d85700}
 .pim img{width:100%;height:100%;object-fit:cover;will-change:transform}
 .pt{display:flex;flex-direction:column;justify-content:space-between;padding:1.4rem 1.4rem 1.2rem 0}
-.pt .num{font:400 clamp(2.4rem,5vw,4.5rem)/1 var(--f);letter-spacing:-.06em;color:var(--gold)}
-.pt h3{font-size:clamp(1.6rem,2.9vw,2.7rem);margin:1.4rem 0;line-height:1}.pt p{color:#9d998f;max-width:420px}
-.tags{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0}.tags span{font-size:.6rem;border:1px solid rgba(239,234,226,.22);padding:.4rem .9rem;text-transform:uppercase;letter-spacing:.18em;color:#b9b5ab}
-.go{align-self:flex-start;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;padding-bottom:.6rem;border-bottom:1px solid var(--gold);transition:color .4s,letter-spacing .5s}.go:hover{color:var(--gold);letter-spacing:.34em}
+.pt .num{font:400 clamp(2.4rem,5vw,4.5rem)/1 var(--f);letter-spacing:-.06em;color:#fff}
+.pt h3{font-size:clamp(1.6rem,2.9vw,2.7rem);margin:1.4rem 0;line-height:1}.pt p{color:rgba(255,255,255,.88);max-width:420px}
+.tags{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0}.tags span{font-size:.6rem;border:1px solid rgba(255,255,255,.55);padding:.4rem .9rem;text-transform:uppercase;letter-spacing:.18em;color:#fff}
+.go{align-self:flex-start;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;padding-bottom:.6rem;border-bottom:1px solid #fff;color:#fff;transition:letter-spacing .5s}.go:hover{letter-spacing:.34em}
 .contact{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-bottom:4rem}
 .contact .st{font-size:clamp(3rem,10.5vw,10rem);max-width:none}
 .mail{font:400 clamp(1.4rem,4.6vw,4.4rem) var(--f);letter-spacing:-.045em;display:inline-block;border-bottom:1px solid currentColor;padding-bottom:.25em}
 .links{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:3rem}
 footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase}
-.cur{position:fixed;left:0;top:0;width:34px;height:34px;border:1px solid #fff;border-radius:50%;mix-blend-mode:difference;pointer-events:none;z-index:200;opacity:0}
-@media(max-width:899px){.nav ul{display:none}.hero-meta,.about,.pin{grid-template-columns:1fr}.about-photo{position:relative;top:0;max-width:340px}.portrait{top:13vh;width:30vw}.name .l2{padding-left:6vw}.proj{padding:2vh 3vw}.pin{padding:3vw;gap:1rem;max-height:96svh}.pt{padding:0 1vw}.pt .num{display:none}.fact{grid-template-columns:7rem 1fr}}
+.cur{position:fixed;left:0;top:0;width:34px;height:34px;border:1px solid var(--fg);border-radius:50%;pointer-events:none;z-index:200;opacity:0}
+
+.nav{background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.pg{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--fg);transform:scaleX(0);transform-origin:0 50%;z-index:60}
+.blob{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.b1{width:55vw;height:55vw;left:-15vw;top:-12vw;background:radial-gradient(circle at 40% 40%,#ffb37a,rgba(255,179,122,0) 68%)}
+.b2{width:52vw;height:52vw;right:-12vw;bottom:-20vw;background:radial-gradient(circle,#c74400,rgba(199,68,0,0) 68%)}
+.rings{position:absolute;right:-14vw;top:-6vh;width:min(64vw,780px);color:var(--fg);opacity:.32;z-index:0;pointer-events:none}
+.hero .tag,.hero .name,.hero .rule,.hero-meta{position:relative;z-index:1}
+.name .l2{color:transparent;-webkit-text-stroke:2px var(--fg)}.name .l2 .ch{transition:color .5s}.name .l2 .ch:hover{color:var(--fg)}
+.badge{position:absolute;left:-58px;bottom:-58px;width:116px;height:116px;border-radius:50%;background:#fff;color:#fa6601;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(90,34,0,.5)}
+.badge svg{position:absolute;inset:0;width:100%;height:100%}.badge text{font:700 15.4px Arial,sans-serif;letter-spacing:3.2px;text-transform:uppercase;fill:currentColor}.badge b{font-size:1.5rem;font-weight:400}
+.ticker{padding:2.2rem 0;border-color:var(--line)}
+.tk{align-items:center;font-size:clamp(2.4rem,6vw,5.4rem);letter-spacing:-.05em;text-transform:none;color:var(--fg)}
+.tk span{display:inline-flex;align-items:center;gap:2.2rem;padding-right:2.2rem}.tk b{font-weight:400}.tk b:nth-of-type(even){color:transparent;-webkit-text-stroke:1px var(--fg)}.tk em{font-style:normal;font-size:.45em}
+[data-num]:before{content:attr(data-num);position:absolute;right:4vw;top:6vh;font-size:clamp(9rem,28vw,28rem);line-height:.8;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1px var(--line);z-index:-1;pointer-events:none}
+.projects,.contact{position:relative}.contact{overflow:hidden}
+.contact>*:not(.blob):not(.hello){position:relative;z-index:1}
+.fact span:last-child{transition:transform .6s cubic-bezier(.16,1,.3,1)}.fact:hover span:last-child{transform:translateX(14px)}
+.pim{padding-top:30px;background:#fff;border-radius:10px;box-shadow:0 20px 40px -20px rgba(90,34,0,.55)}
+.pim:before{content:attr(data-url);position:absolute;top:0;left:0;right:0;height:30px;z-index:2;background-color:#fff;color:#a4632f;font-size:.62rem;letter-spacing:.06em;line-height:30px;padding:0 14px 0 66px;background-image:radial-gradient(circle at 16px 15px,#ff5f57 4px,transparent 5px),radial-gradient(circle at 32px 15px,#febc2e 4px,transparent 5px),radial-gradient(circle at 48px 15px,#28c840 4px,transparent 5px)}
+.pt .num{opacity:.95}
+.hello{position:absolute;right:6vw;bottom:24vh;width:clamp(120px,14vw,190px);aspect-ratio:1;border-radius:50%;background:#fff;color:#fa6601;display:grid;place-items:center;text-align:center;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;line-height:1.7;z-index:2;box-shadow:0 20px 40px -18px rgba(90,34,0,.6)}
+@media(max-width:899px){.nav ul{display:none}.hero-meta,.about,.pin{grid-template-columns:1fr}.about-photo{position:relative;top:0;max-width:340px}.pf{top:13vh;width:30vw}.name .l2{padding-left:6vw}.proj{padding:2vh 3vw}.pin{padding:3vw;gap:1rem;max-height:96svh}.pt{padding:0 1vw}.pt .num{display:none}.fact{grid-template-columns:7rem 1fr}.hello{display:none}.badge{width:88px;height:88px;left:-40px;bottom:-40px}}
 @media(hover:none){.cur{display:none}}
 </style></head><body>
 <div class="ld"><div class="ld-t"></div><div class="ld-b"></div><div class="ld-c"><div class="ld-n">000</div><div class="tag">James Chrispin Mligo</div></div></div>
-<div class="cur"></div><div class="grain"></div>
+<div class="cur"></div><div class="pg"></div><div class="grain"></div>
 <nav class="nav"><a href="#top" class="logo">J. C. Mligo</a>
 <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
-<span class="tag" style="color:#fff"><i class="dot"></i>Open to work</span></nav>
+<span class="tag" ><i class="dot"></i>Open to work</span></nav>
 
-<header class="hero" id="top" data-bg="#0a0a0a" data-fg="#efeae2">
-<div class="portrait"><img src="images/james.jpg" alt="James Chrispin Mligo"></div>
+<header class="hero" id="top" data-bg="#fa6601" data-fg="#ffffff" data-acc="#ffffff">
+<div class="blob b1"></div><div class="blob b2"></div>
+<svg class="rings" viewBox="0 0 600 600" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="300" cy="300" r="290"/><circle cx="300" cy="300" r="225"/><circle cx="300" cy="300" r="160"/><circle cx="300" cy="300" r="95"/><path d="M5 300H595M300 5V595" opacity=".5"/></g></svg>
+<div class="pf"><div class="portrait"><img src="images/james.jpg" alt="James Chrispin Mligo"></div>
+<div class="badge" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#cp">Full stack developer • Dar es Salaam • Open to work •</textPath></text></svg><b>↓</b></div></div>
 <div class="tag">Full Stack Developer — Dar es Salaam, Tanzania · <span class="clock"></span></div>
 <h1 class="name" aria-label="James Mligo"><span class="big l1">James</span><span class="big l2">Mligo</span></h1>
 <div class="rule"></div><div class="hero-meta">
@@ -84,29 +109,30 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin
 <div class="cta"><a href="#projects" class="btn s mag">View Projects</a><a href="mailto:mligojames34@gmail.com" class="btn mag">Get in Touch</a></div>
 </div></header>
 
-<div class="ticker"><div class="tk"><span>Laravel ✦ PHP ✦ MySQL ✦ PostgreSQL ✦ OJS Framework ✦ React ✦ Flutter ✦ REST APIs ✦ </span><span>Laravel ✦ PHP ✦ MySQL ✦ PostgreSQL ✦ OJS Framework ✦ React ✦ Flutter ✦ REST APIs ✦ </span></div></div>
+<div class="ticker"><div class="tk"><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span></div></div>
 
-<section class="sec" id="about" data-bg="#efeae2" data-fg="#0a0a0a">
+<section class="sec" id="about" data-num="01" data-bg="#fffaf4" data-fg="#5a2200" data-acc="#fa6601">
 <div class="tag">01 — About</div><h2 class="st">Technology meets business</h2>
 <div class="about"><div class="about-photo"><img src="images/james.jpg" alt="James Chrispin Mligo"></div>
 <div><p class="about-text">I graduated in 2026 with a BSc in Information and Communication Technology with Management from Mzumbe University, and work as a full stack developer — comfortable moving between back-end architecture and front-end interfaces on the same project. My work sits at the intersection of technology and business: I've built systems for real companies, and I bring a business-minded lens to how software should actually solve a problem, not just demonstrate a technique. I'm currently expanding into React and Flutter.</p>
 <div class="facts"><div class="fact"><i></i><span class="tag">Based in</span><span>Dar es Salaam, Tanzania</span></div><div class="fact"><i></i><span class="tag">Education</span><span>BSc ICT with Management — Mzumbe University, 2026</span></div><div class="fact"><i></i><span class="tag">Core stack</span><span>Laravel, MySQL, PostgreSQL</span></div><div class="fact"><i></i><span class="tag">Learning</span><span>React, Flutter</span></div><div class="fact"><i></i><span class="tag">Available</span><span>Open to opportunities</span></div></div></div></div></section>
 
-<section class="sec" id="skills" data-bg="#0a0a0a" data-fg="#efeae2" style="padding-inline:0">
+<section class="sec" id="skills" data-num="02" data-bg="#fa6601" data-fg="#ffffff" data-acc="#ffffff" style="padding-inline:0">
 <div class="wrap"><div class="tag">02 — Skills</div><h2 class="st">What I build with</h2></div>
 <div class="srow"><div class="tag">Back-End</div><div class="strip">Laravel (PHP) — OJS Framework — REST API Design —</div></div>
 <div class="srow"><div class="tag">Databases</div><div class="strip">MySQL — PostgreSQL — Schema Design —</div></div>
 <div class="srow"><div class="tag">Front-End &amp; Mobile</div><div class="strip">HTML / CSS / JS — React (learning) — Flutter (learning) —</div></div></section>
 
-<section class="projects" id="projects" data-bg="#0a0a0a" data-fg="#efeae2">
+<section class="projects" id="projects" data-num="03" data-bg="#fffaf4" data-fg="#5a2200" data-acc="#fa6601">
 <div class="wrap"><div class="tag">03 — Projects</div><h2 class="st">Selected work</h2></div>
-<article class="proj"><div class="pin"><div class="pim"><img src="images/project1.jpg" alt="LONAC Group website screenshot"></div><div class="pt"><div><div class="num">01</div><h3>LONAC Group — Website</h3><p>Full website development for LONAC Group, built to represent the company's services and brand online.</p><div class="tags"><span>Client Project</span><span>Web Development</span></div></div><a class="go" href="https://lonac-group.com" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
-<article class="proj"><div class="pin"><div class="pim"><img src="images/project2.jpg" alt="LONAC management system screenshot"></div><div class="pt"><div><div class="num">02</div><h3>LONAC Group — Management System</h3><p>A business management system built for LONAC Group to handle internal operations and workflows.</p><div class="tags"><span>Client Project</span><span>Full Stack</span><span>Business System</span></div></div><a class="go" href="https://lonac-group.com/management" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
-<article class="proj"><div class="pin"><div class="pim"><img src="images/project3.jpg" alt="Bluewave International website screenshot"></div><div class="pt"><div><div class="num">03</div><h3>Bluewave International — Website</h3><p>Full design and development of the Bluewave International website, from concept through deployment.</p><div class="tags"><span>Client Project</span><span>Design</span><span>Web Development</span></div></div><a class="go" href="https://bluewaveint.co.tz" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
-<article class="proj"><div class="pin"><div class="pim"><img src="images/project4.jpg" alt="InvestBridge screenshot"></div><div class="pt"><div><div class="num">04</div><h3>InvestBridge — Final Year Project</h3><p>Connects investors and enterprises using a recommendation algorithm, matching capital with opportunity based on fit.</p><div class="tags"><span>Academic Project</span><span>Laravel</span><span>Recommendation Algorithm</span></div></div><a class="go" href="https://github.com/mligojames34-eng/InvestBridge" target="_blank" rel="noopener">View Code ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="lonac-group.com"><img src="images/project1.jpg" alt="LONAC Group website screenshot"></div><div class="pt"><div><div class="num">01</div><h3>LONAC Group — Website</h3><p>Full website development for LONAC Group, built to represent the company's services and brand online.</p><div class="tags"><span>Client Project</span><span>Web Development</span></div></div><a class="go" href="https://lonac-group.com" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="lonac-group.com/management"><img src="images/project2.jpg" alt="LONAC management system screenshot"></div><div class="pt"><div><div class="num">02</div><h3>LONAC Group — Management System</h3><p>A business management system built for LONAC Group to handle internal operations and workflows.</p><div class="tags"><span>Client Project</span><span>Full Stack</span><span>Business System</span></div></div><a class="go" href="https://lonac-group.com/management" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="bluewaveint.co.tz"><img src="images/project3.jpg" alt="Bluewave International website screenshot"></div><div class="pt"><div><div class="num">03</div><h3>Bluewave International — Website</h3><p>Full design and development of the Bluewave International website, from concept through deployment.</p><div class="tags"><span>Client Project</span><span>Design</span><span>Web Development</span></div></div><a class="go" href="https://bluewaveint.co.tz" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="github.com/mligojames34-eng/InvestBridge"><img src="images/project4.jpg" alt="InvestBridge screenshot"></div><div class="pt"><div><div class="num">04</div><h3>InvestBridge — Final Year Project</h3><p>Connects investors and enterprises using a recommendation algorithm, matching capital with opportunity based on fit.</p><div class="tags"><span>Academic Project</span><span>Laravel</span><span>Recommendation Algorithm</span></div></div><a class="go" href="https://github.com/mligojames34-eng/InvestBridge" target="_blank" rel="noopener">View Code ↗</a></div></div></article>
 </section>
 
-<section class="sec contact" id="contact" data-bg="#d8cdb8" data-fg="#0a0a0a">
+<section class="sec contact" id="contact" data-num="04" data-bg="#fa6601" data-fg="#ffffff" data-acc="#ffffff">
+<div class="blob b1"></div><div class="blob b2"></div><a class="hello" href="mailto:mligojames34@gmail.com"><span>Say<br>hello ↗</span></a>
 <div class="tag">04 — Let's work together</div><h2 class="st">Have a project in mind? Let's build it.</h2>
 <div><a class="mail" href="mailto:mligojames34@gmail.com">mligojames34@gmail.com</a></div>
 <div class="links"><a class="btn s mag" href="https://wa.me/255688787438">WhatsApp</a><a class="btn mag" href="tel:+255699794281">+255 699 794 281</a><a class="btn mag" href="https://github.com/mligojames34-eng">GitHub</a></div>
@@ -149,10 +175,10 @@ addEventListener('mousemove',e=>{if(scrollY>innerHeight*.8)return;hero.forEach((
 // hero lines drift apart on scroll
 gsap.to('.l1',{xPercent:-10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 gsap.to('.l2',{xPercent:10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-gsap.to('.portrait',{yPercent:35,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.pf',{yPercent:35,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 
 // page colour shifts between sections
-$$('[data-bg]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:t=>t.isActive&&gsap.to(document.documentElement,{'--bg':s.dataset.bg,'--fg':s.dataset.fg,duration:.7,ease:'power2.out'})}));
+$$('[data-bg]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:t=>t.isActive&&gsap.to(document.documentElement,{'--bg':s.dataset.bg,'--fg':s.dataset.fg,'--acc':s.dataset.acc,duration:.7,ease:'power2.out'})}));
 
 // ticker: loops, skews with scroll velocity
 const tk=gsap.to('.tk',{xPercent:-50,repeat:-1,duration:22,ease:'none'});
@@ -185,6 +211,13 @@ cards.forEach((c,i)=>{
 const mail=words($('.mail'),true);
 $('.mail').addEventListener('mouseenter',()=>gsap.fromTo(mail,{y:0},{y:-16,duration:.25,stagger:.02,yoyo:true,repeat:1,ease:'power2.out',overwrite:true}));
 
+gsap.to('.blob',{x:'random(-70,70)',y:'random(-60,60)',scale:'random(.92,1.15)',duration:'random(5,8)',repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.rings',{rotate:360,duration:110,repeat:-1,ease:'none'});
+gsap.to('.badge svg',{rotate:-360,duration:16,repeat:-1,ease:'none'});
+gsap.to('.pg',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+gsap.from('.badge',{scale:0,rotate:-120,duration:1.4,ease:'back.out(1.8)',delay:3.6});
+gsap.from('.hello',{scale:0,rotate:-90,duration:1.5,ease:'elastic.out(1,.6)',scrollTrigger:{trigger:'.contact',start:'top 55%'}});
+gsap.to('.hello',{y:-30,duration:2.6,repeat:-1,yoyo:true,ease:'sine.inOut'});
 gsap.from('.rule',{scaleX:0,transformOrigin:'0 50%',duration:2,ease:'expo.inOut',delay:3.2});
 if(fine){
  const cur=$('.cur'),qx=gsap.quickTo(cur,'x',{duration:.3}),qy=gsap.quickTo(cur,'y',{duration:.3});gsap.set(cur,{xPercent:-50,yPercent:-50});
