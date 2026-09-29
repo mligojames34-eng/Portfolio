@@ -1,8 +1,10 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>James Chrispin Mligo — Full Stack Developer</title>
 <meta name="description" content="James Chrispin Mligo — full stack developer in Dar es Salaam, Tanzania. Laravel, MySQL, PostgreSQL, React and Flutter.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fa6601;--fg:#ffffff;--gold:#ffffff;--mut:color-mix(in srgb,var(--fg) 74%,transparent);--line:color-mix(in srgb,var(--fg) 26%,transparent);--pad:max(5vw,calc((100vw - 1400px)/2));--f:Arial,"Helvetica Neue",Helvetica,sans-serif}
+:root{--bg:#fa6601;--fg:#ffffff;--gold:#ffffff;--mut:color-mix(in srgb,var(--fg) 74%,transparent);--line:color-mix(in srgb,var(--fg) 26%,transparent);--pad:max(5vw,calc((100vw - 1400px)/2));--f:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--hd:"Source Serif 4",Georgia,"Times New Roman",serif;--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
 *,*:before,*:after{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--fg);font:400 1rem/1.7 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--fg);color:var(--bg)}
@@ -74,7 +76,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin
 .hero .tag,.hero .name,.hero .rule,.hero-meta{position:relative;z-index:1}
 .name .l2{color:transparent;-webkit-text-stroke:2px var(--fg)}.name .l2 .ch{transition:color .5s}.name .l2 .ch:hover{color:var(--fg)}
 .badge{position:absolute;left:-58px;bottom:-58px;width:116px;height:116px;border-radius:50%;background:#fff;color:#fa6601;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(90,34,0,.5)}
-.badge svg{position:absolute;inset:0;width:100%;height:100%}.badge text{font:700 15.4px Arial,sans-serif;letter-spacing:3.2px;text-transform:uppercase;fill:currentColor}.badge b{font-size:1.5rem;font-weight:400}
+.badge svg{position:absolute;inset:0;width:100%;height:100%}.badge text{font:500 11px var(--mono);letter-spacing:2px;text-transform:uppercase;fill:currentColor}.badge b{font-size:1.5rem;font-weight:400}
 .ticker{padding:2.2rem 0;border-color:var(--line)}
 .tk{align-items:center;font-size:clamp(2.4rem,6vw,5.4rem);letter-spacing:-.05em;text-transform:none;color:var(--fg)}
 .tk span{display:inline-flex;align-items:center;gap:2.2rem;padding-right:2.2rem}.tk b{font-weight:400}.tk b:nth-of-type(even){color:transparent;-webkit-text-stroke:1px var(--fg)}.tk em{font-style:normal;font-size:.45em}
@@ -121,6 +123,26 @@ footer{display:block;font-size:1rem;letter-spacing:0;text-transform:none;margin-
 .fgrid .tag{display:block;margin-bottom:1.2rem}.fgrid p{max-width:340px;color:var(--mut)}
 .fgrid a{display:block;padding:.25rem 0;transition:transform .4s cubic-bezier(.16,1,.3,1)}.fgrid a:hover{transform:translateX(8px)}
 .fbar{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.4rem;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase}
+
+/* ===== official type system: serif headings · sans body · mono labels ===== */
+h1,h2,h3,.disp,.name,.st,.strip,.tk,.mail,.stats b,.ld-n,.about-text,.menu a,.logo{font-family:var(--hd)}
+h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
+.name{font-weight:600;letter-spacing:-.045em;line-height:.9}
+.st{font-weight:500;letter-spacing:-.03em;line-height:1.04}
+.strip{font-weight:600;letter-spacing:-.035em}
+.tk{font-weight:500;letter-spacing:-.03em}
+.mail{font-weight:500;letter-spacing:-.025em}
+.stats b,.ld-n{font-weight:500;letter-spacing:-.03em}
+.about-text{font-weight:400;letter-spacing:-.01em;line-height:1.42}
+.menu a{font-weight:500;letter-spacing:-.03em}
+.logo{font-size:1.2rem;font-weight:600;letter-spacing:-.01em;text-transform:none}
+.tag,.pill,.btn,.role,.ptop,.fbar,.nav ul,.go,.tags span,.cnote+*,.pim:before{font-family:var(--mono)}
+.tag,.role,.ptop,.fbar,.nav ul{letter-spacing:.14em;font-weight:500}
+.pill,.btn,.go{letter-spacing:.14em;font-weight:500}
+.tags span{letter-spacing:.1em}.go:hover{letter-spacing:.2em}
+.pim:before{letter-spacing:0;font-size:.64rem}
+.hero-meta p,.pt p,.cnote,.fgrid p{line-height:1.7}
+.fact span:not(.tag),.clist a>span:not(.tag),.scard li,.fgrid a{font-family:var(--f)}
 @media(max-width:899px){.nav ul{display:none}.hero-meta,.about,.pin{grid-template-columns:1fr}.about-photo{position:relative;top:0;max-width:340px}.pf{top:13vh;width:30vw}.name .l2{padding-left:6vw}.proj{padding:2vh 3vw}.pin{padding:3vw;gap:1rem;max-height:96svh}.pt{padding:0 1vw}.pt .num{display:none}.fact{grid-template-columns:7rem 1fr}.scards,.cgrid,.fgrid{grid-template-columns:1fr}.burger{display:block}.pill{display:none}.menu{display:flex}.cols{grid-template-columns:repeat(2,1fr)}.cols i:nth-child(n+3){display:none}.scard{min-height:0;gap:1.6rem}.clist a{grid-template-columns:6rem 1fr auto}.badge{width:88px;height:88px;left:-40px;bottom:-40px}}
 @media(hover:none){.cur{display:none}}
 </style></head><body>
