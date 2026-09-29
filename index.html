@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fa6601;--fg:#ffffff;--gold:#ffffff;--mut:color-mix(in srgb,var(--fg) 74%,transparent);--line:color-mix(in srgb,var(--fg) 26%,transparent);--pad:max(5vw,calc((100vw - 1400px)/2));--f:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--hd:"Source Serif 4",Georgia,"Times New Roman",serif;--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
+:root{--bg:#fa6601;--fg:#ffffff;--gold:#ffffff;--acc:#ffffff;--mut:color-mix(in srgb,var(--fg) 90%,transparent);--line:color-mix(in srgb,var(--fg) 26%,transparent);--pad:max(5vw,calc((100vw - 1400px)/2));--f:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--hd:"Source Serif 4",Georgia,"Times New Roman",serif;--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
 *,*:before,*:after{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--fg);font:400 1rem/1.7 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--fg);color:var(--bg)}
@@ -144,6 +144,40 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .hero-meta p,.pt p,.cnote,.fgrid p{line-height:1.7}
 .fact span:not(.tag),.clist a>span:not(.tag),.scard li,.fgrid a{font-family:var(--f)}
 @media(max-width:899px){.nav ul{display:none}.hero-meta,.about,.pin{grid-template-columns:1fr}.about-photo{position:relative;top:0;max-width:340px}.pf{top:13vh;width:30vw}.name .l2{padding-left:6vw}.proj{padding:2vh 3vw}.pin{padding:3vw;gap:1rem;max-height:96svh}.pt{padding:0 1vw}.pt .num{display:none}.fact{grid-template-columns:7rem 1fr}.scards,.cgrid,.fgrid{grid-template-columns:1fr}.burger{display:block}.pill{display:none}.menu{display:flex}.cols{grid-template-columns:repeat(2,1fr)}.cols i:nth-child(n+3){display:none}.scard{min-height:0;gap:1.6rem}.clist a{grid-template-columns:6rem 1fr auto}.badge{width:88px;height:88px;left:-40px;bottom:-40px}}
+
+/* --- clearer project images (only change) --- */
+.pim{background:#fff;cursor:zoom-in;position:relative}
+.pim img{object-fit:contain;object-position:center top;background:#fff;transform:none!important}
+.pim:after{content:"Click to enlarge ⤢";position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.72);color:#fff;font:500 .62rem var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:.45rem .8rem;border-radius:999px;opacity:0;transition:opacity .3s}
+.pim:hover:after{opacity:1}
+@media(hover:none){.pim:after{opacity:1}}
+.lb{position:fixed;inset:0;z-index:300;background:rgba(20,10,4,.93);display:none;align-items:center;justify-content:center;padding:4vw;flex-direction:column;gap:1rem}
+.lb.on{display:flex}.lb img{max-width:100%;max-height:84vh;object-fit:contain;background:#fff;border-radius:6px}
+.lb b{position:absolute;top:calc(1rem + env(safe-area-inset-top,0px));right:1rem;width:44px;height:44px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-size:1.4rem;cursor:pointer}
+
+/* --- readability, mobile fit, accessibility refinements --- */
+.tag,.role,.ptop,.fbar,.nav ul{font-size:.74rem}
+.tags span{font-size:.68rem;border-color:#fff}
+.pill,.btn,.go{font-size:.74rem}
+.pt p{color:rgba(255,255,255,.96)}
+.strip{-webkit-text-stroke:1.5px var(--fg)}
+.go{padding:.9rem 0 .6rem}
+.fgrid a{padding:.6rem 0}
+.nav li a{padding:.6rem 0}
+:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+@media(max-width:899px),(max-height:640px){.proj{position:relative;height:auto;padding:1.2rem 3vw}.pin{max-height:none}}
+@media(prefers-reduced-motion:reduce){.dot{animation:none}.btn,.go,.scard,.strip,.fgrid a{transition:none}}
+
+/* --- floating buttons --- */
+.fab{position:fixed;right:max(1rem,env(safe-area-inset-right,0px));bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:35;display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 14px 28px -10px rgba(60,20,0,.55);transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .3s,visibility .3s}
+.fab a:hover{transform:scale(1.1)}
+.fab svg{width:26px;height:26px;fill:currentColor}
+.fab .wa{background:#25d366;color:#fff}
+.fab .wa svg{width:30px;height:30px}
+.fab .up{background:#fff;color:#fa6601;opacity:0;visibility:hidden;transform:translateY(10px)}
+.fab .up.show{opacity:1;visibility:visible;transform:none}.fab .up.show:hover{transform:scale(1.1)}
+@media(prefers-reduced-motion:reduce){.fab a{transition:none}}
 @media(hover:none){.cur{display:none}}
 </style></head><body>
 <div class="ld"><div class="ld-t"></div><div class="ld-b"></div><div class="ld-c"><div class="ld-n">000</div><div class="tag">James Chrispin Mligo</div></div></div>
@@ -167,7 +201,7 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 <div class="cta"><a href="#projects" class="btn s mag">View Projects</a><a href="mailto:mligojames34@gmail.com" class="btn mag">Get in Touch</a></div>
 </div></header>
 
-<div class="ticker"><div class="tk"><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span></div></div>
+<div class="ticker"><div class="tk"><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span></div>
 
 <section class="sec" id="about" data-num="01" data-bg="#fffaf4" data-fg="#5a2200" data-acc="#fa6601">
 <div class="shead"><span class="tag">01 — About</span><span class="tag">Who I am</span></div><h2 class="st">Technology meets business</h2>
@@ -179,16 +213,16 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 <section class="sec" id="skills" data-num="02" data-bg="#fa6601" data-fg="#ffffff" data-acc="#ffffff" style="padding-inline:0">
 <div class="wrap"><div class="shead"><span class="tag">02 — Skills</span><span class="tag">Tools of the trade</span></div><h2 class="st">What I build with</h2></div>
 <div class="wrap"><div class="scards"><div class="scard"><div><span class="tag">01</span><h3>Back-End</h3></div><ul><li>Laravel (PHP)</li><li>OJS Framework</li><li>REST API Design</li></ul></div><div class="scard"><div><span class="tag">02</span><h3>Databases</h3></div><ul><li>MySQL</li><li>PostgreSQL</li><li>Schema Design</li></ul></div><div class="scard"><div><span class="tag">03</span><h3>Front-End &amp; Mobile</h3></div><ul><li>HTML / CSS / JS</li><li>React (learning)</li><li>Flutter (learning)</li></ul></div></div></div>
-<div class="srow"><div class="tag">Back-End</div><div class="strip">Laravel (PHP) — OJS Framework — REST API Design —</div></div>
-<div class="srow"><div class="tag">Databases</div><div class="strip">MySQL — PostgreSQL — Schema Design —</div></div>
-<div class="srow"><div class="tag">Front-End &amp; Mobile</div><div class="strip">HTML / CSS / JS — React (learning) — Flutter (learning) —</div></div></section>
+<div class="srow" aria-hidden="true"><div class="tag">Back-End</div><div class="strip">Laravel (PHP) — OJS Framework — REST API Design —</div></div>
+<div class="srow" aria-hidden="true"><div class="tag">Databases</div><div class="strip">MySQL — PostgreSQL — Schema Design —</div></div>
+<div class="srow" aria-hidden="true"><div class="tag">Front-End &amp; Mobile</div><div class="strip">HTML / CSS / JS — React (learning) — Flutter (learning) —</div></div></section>
 
 <section class="projects" id="projects" data-num="03" data-bg="#fffaf4" data-fg="#5a2200" data-acc="#fa6601">
 <div class="wrap"><div class="shead"><span class="tag">03 — Projects</span><span class="tag">Selected work</span></div><h2 class="st">Selected work</h2></div>
-<article class="proj"><div class="pin"><div class="pim" data-url="lonac-group.com"><img src="images/project1.jpg" alt="LONAC Group website screenshot"></div><div class="pt"><div><div class="ptop"><span>01 / 04</span><span>Client Project</span></div><h3>LONAC Group — Website</h3><p>Full website development for LONAC Group, built to represent the company's services and brand online.</p><div class="tags"><span>Web Development</span></div></div><a class="go" href="https://lonac-group.com" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
-<article class="proj"><div class="pin"><div class="pim" data-url="lonac-group.com/management"><img src="images/project2.jpg" alt="LONAC management system screenshot"></div><div class="pt"><div><div class="ptop"><span>02 / 04</span><span>Client Project</span></div><h3>LONAC Group — Management System</h3><p>A business management system built for LONAC Group to handle internal operations and workflows.</p><div class="tags"><span>Full Stack</span><span>Business System</span></div></div><a class="go" href="https://lonac-group.com/management" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
-<article class="proj"><div class="pin"><div class="pim" data-url="bluewaveint.co.tz"><img src="images/project3.jpg" alt="Bluewave International website screenshot"></div><div class="pt"><div><div class="ptop"><span>03 / 04</span><span>Client Project</span></div><h3>Bluewave International — Website</h3><p>Full design and development of the Bluewave International website, from concept through deployment.</p><div class="tags"><span>Design</span><span>Web Development</span></div></div><a class="go" href="https://bluewaveint.co.tz" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
-<article class="proj"><div class="pin"><div class="pim" data-url="github.com/mligojames34-eng/InvestBridge"><img src="images/project4.jpg" alt="InvestBridge screenshot"></div><div class="pt"><div><div class="ptop"><span>04 / 04</span><span>Academic Project</span></div><h3>InvestBridge — Final Year Project</h3><p>Connects investors and enterprises using a recommendation algorithm, matching capital with opportunity based on fit.</p><div class="tags"><span>Laravel</span><span>Recommendation Algorithm</span></div></div><a class="go" href="https://github.com/mligojames34-eng/InvestBridge" target="_blank" rel="noopener">View Code ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="lonac-group.com"><img src="images/project1.jpg" alt="LONAC Group website screenshot"></div><div class="pt"><div><div class="ptop"><span>01 / 04</span><span>Client Project</span></div><h3>LONAC Group — Website</h3><p>Full website built for LONAC Group to present its services and brand clearly to clients online.</p><div class="tags"><span>Web Development</span></div></div><a class="go" href="https://lonac-group.com" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="lonac-group.com/management"><img src="images/project2.jpg" alt="LONAC management system screenshot"></div><div class="pt"><div><div class="ptop"><span>02 / 04</span><span>Client Project</span></div><h3>LONAC Group — Management System</h3><p>A business management system built for LONAC Group, bringing its internal operations and workflows into one platform.</p><div class="tags"><span>Full Stack</span><span>Business System</span></div></div><a class="go" href="https://lonac-group.com/management" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="bluewaveint.co.tz"><img src="images/project3.jpg" alt="Bluewave International website screenshot"></div><div class="pt"><div><div class="ptop"><span>03 / 04</span><span>Client Project</span></div><h3>Bluewave International — Website</h3><p>Bluewave International's website, designed and developed end to end — from first concept through to deployment.</p><div class="tags"><span>Design</span><span>Web Development</span></div></div><a class="go" href="https://bluewaveint.co.tz" target="_blank" rel="noopener">Visit Site ↗</a></div></div></article>
+<article class="proj"><div class="pin"><div class="pim" data-url="github.com/mligojames34-eng/InvestBridge"><img src="images/project4.jpg" alt="InvestBridge screenshot"></div><div class="pt"><div><div class="ptop"><span>04 / 04</span><span>Academic Project</span></div><h3>InvestBridge — Final Year Project</h3><p>Final-year project: a platform that connects investors and enterprises, using a recommendation algorithm to match capital with opportunities based on fit.</p><div class="tags"><span>Laravel</span><span>Recommendation Algorithm</span></div></div><a class="go" href="https://github.com/mligojames34-eng/InvestBridge" target="_blank" rel="noopener">View Code ↗</a></div></div></article>
 </section>
 
 <section class="sec contact" id="contact" data-num="04" data-bg="#fa6601" data-fg="#ffffff" data-acc="#ffffff">
@@ -200,6 +234,10 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 <div><span class="tag">Connect</span><a href="mailto:mligojames34@gmail.com">Email</a><a href="https://wa.me/255688787438">WhatsApp</a><a href="https://github.com/mligojames34-eng">GitHub</a></div></div>
 <div class="fbar"><span>© 2026 James Chrispin Mligo</span><span>Dar es Salaam · <span class="clock"></span></span><a href="#top">Back to top ↑</a></div></footer></section>
 
+<div class="fab">
+<a class="up" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l8 8-1.4 1.4L13 7.8V20h-2V7.8l-5.6 5.6L4 12z"/></svg></a>
+<a class="wa" href="https://wa.me/255688787438?text=Hello%20James%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
@@ -207,48 +245,66 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover:hover)').matches;
+const stack=matchMedia('(min-width:900px) and (min-height:641px)').matches;
 const tick=()=>{const t=new Date().toLocaleTimeString('en-GB',{timeZone:'Africa/Dar_es_Salaam',hour:'2-digit',minute:'2-digit'});$$('.clock').forEach(c=>c.textContent=t+' EAT')};tick();setInterval(tick,30000);
 function words(el,split){const t=el.textContent.trim();el.textContent='';el.setAttribute('aria-label',t);const out=[];t.split(' ').forEach((w,i,a)=>{const wd=document.createElement('span');wd.className='wd';wd.setAttribute('aria-hidden','true');if(split)[...w].forEach(c=>{const s=document.createElement('span');s.className='ch';s.textContent=c;wd.append(s);out.push(s)});else{wd.textContent=w;out.push(wd)}el.append(wd);if(i<a.length-1)el.append(' ')});return out}
 const G='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/';
 function scramble(el,txt,d){const o={p:0};gsap.to(o,{p:1,duration:d,ease:'none',onUpdate(){const n=Math.floor(o.p*txt.length);el.textContent=txt.slice(0,n)+[...txt.slice(n)].map(c=>c===' '?' ':G[Math.random()*G.length|0]).join('')},onComplete(){el.textContent=txt}})}
 // mobile menu, smooth anchor scrolling, active nav link
 const bg=$('.burger'),mn=$('.menu');let open=false;
-const mt=gsap.timeline({paused:true}).to(mn,{clipPath:'inset(0 0 0% 0)',duration:.9,ease:'expo.inOut'}).from('.menu a',{yPercent:60,opacity:0,stagger:.08,duration:.8,ease:'expo.out'},'-=.4');
-const setMenu=v=>{open=v;v?mt.play():mt.reverse();bg.classList.toggle('x',v);document.body.style.overflow=v?'hidden':''};
+const mt=gsap.timeline({paused:true}).to(mn,{clipPath:'inset(0 0 0% 0)',duration:reduce?0:.9,ease:'expo.inOut'}).from('.menu a',{yPercent:60,opacity:0,stagger:reduce?0:.08,duration:reduce?0:.8,ease:'expo.out'},'-=.4');
+const setMenu=v=>{open=v;v?mt.play():mt.reverse();bg.classList.toggle('x',v);bg.setAttribute('aria-expanded',v);document.body.style.overflow=v?'hidden':''};
 bg.addEventListener('click',()=>setMenu(!open));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&open)setMenu(false)});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'),t=id==='#top'?0:$(id);if(t===null)return;e.preventDefault();if(open)setMenu(false);gsap.to(window,{duration:reduce?0:1.3,scrollTo:t===0?0:{y:t},ease:'power3.inOut'})}));
 $$('.nav li a').forEach(a=>ScrollTrigger.create({trigger:$(a.getAttribute('href')),start:'top 50%',end:'bottom 50%',onToggle:x=>a.classList.toggle('on',x.isActive)}));
+
+// intro (shortened; click the loader to skip)
+let hero=[];
 if(reduce){$('.ld').remove()}else{
 document.body.style.overflow='hidden';
-const hero=$$('.big').flatMap(e=>words(e,true));
+hero=$$('.big').flatMap(e=>words(e,true));
 gsap.set(hero,{yPercent:130,opacity:0});
 const cnt=$('.ld-n'),o={v:0};
-gsap.timeline({onComplete:()=>{document.body.style.overflow='';ScrollTrigger.refresh()}})
-.to(o,{v:100,duration:1.5,ease:'power3.inOut',onUpdate:()=>cnt.textContent=String(Math.round(o.v)).padStart(3,'0')})
-.to('.ld-c',{opacity:0,scale:.9,duration:.35})
-.to('.ld-t',{yPercent:-100,duration:1,ease:'expo.inOut'},'<.1')
-.to('.ld-b',{yPercent:100,duration:1,ease:'expo.inOut'},'<')
+const intro=gsap.timeline({onComplete:()=>{document.body.style.overflow='';ScrollTrigger.refresh()}})
+.to(o,{v:100,duration:.9,ease:'power3.inOut',onUpdate:()=>cnt.textContent=String(Math.round(o.v)).padStart(3,'0')})
+.to('.ld-c',{opacity:0,scale:.9,duration:.25})
+.to('.ld-t',{yPercent:-100,duration:.8,ease:'expo.inOut'},'<.05')
+.to('.ld-b',{yPercent:100,duration:.8,ease:'expo.inOut'},'<')
 .set('.ld',{display:'none'})
-.to(hero,{yPercent:0,opacity:1,duration:1.7,stagger:{each:.08,from:'start'},ease:'expo.out'},'-=.6')
-.from('.portrait',{clipPath:'inset(100% 0 0 0)',duration:1.8,ease:'expo.out'},'<.2')
-.from('.hero .tag,.hero-meta > *',{y:34,opacity:0,stagger:.1,duration:.9,ease:'power3.out'},'-=1')
-.from('.nav > *',{y:-30,opacity:0,stagger:.08,duration:.7},'-=1');
+.to(hero,{yPercent:0,opacity:1,duration:1.3,stagger:{each:.06,from:'start'},ease:'expo.out'},'-=.5')
+.from('.portrait',{clipPath:'inset(100% 0 0 0)',duration:1.4,ease:'expo.out'},'<.2')
+.from('.hero .tag,.hero-meta > *',{y:34,opacity:0,stagger:.1,duration:.8,ease:'power3.out'},'-=.9')
+.from('.nav > *',{y:-30,opacity:0,stagger:.08,duration:.6},'-=.9');
+$('.ld').addEventListener('click',()=>intro.timeScale(4));
 
 // cycling role text
 const roles=['Full Stack Developer','Laravel Engineer','Business-minded Builder','Database Designer'];let ri=0;
-gsap.delayedCall(4,function loop(){ri=(ri+1)%roles.length;scramble($('.role'),roles[ri],.9);gsap.delayedCall(2.8,loop)});
+gsap.delayedCall(2.8,function loop(){ri=(ri+1)%roles.length;scramble($('.role'),roles[ri],.9);gsap.delayedCall(2.8,loop)});
 
 // hero letters bend away from cursor
 if(fine){const qy=hero.map(c=>gsap.quickTo(c,'y',{duration:.6,ease:'power3'})),qr=hero.map(c=>gsap.quickTo(c,'rotation',{duration:.6,ease:'power3'}));
 addEventListener('mousemove',e=>{if(scrollY>innerHeight*.8)return;hero.forEach((c,i)=>{const r=c.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),s=Math.max(0,1-Math.hypot(dx,dy)/300);qy[i](-s*60);qr[i](-dx*s*.05)})})}
 
+gsap.from('.badge',{scale:0,rotate:-120,duration:1.2,ease:'back.out(1.8)',delay:2.2});
+gsap.from('.cols i',{scaleY:0,transformOrigin:'50% 0',stagger:.15,duration:1.8,ease:'expo.out',delay:1.6});
+gsap.from('.rule',{scaleX:0,transformOrigin:'0 50%',duration:1.6,ease:'expo.inOut',delay:1.8});
+}
+
+// page colour shifts between sections (instant if reduced motion)
+$$('[data-bg]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:t=>t.isActive&&gsap.to(document.documentElement,{'--bg':s.dataset.bg,'--fg':s.dataset.fg,'--acc':s.dataset.acc,duration:reduce?0:.7,ease:'power2.out'})}));
+
+// stat counters
+$$('.num').forEach(el=>{const to=+el.dataset.to;if(reduce){el.textContent=to;return}const o={v:0};gsap.to(o,{v:to,duration:2.2,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%'},onUpdate:()=>el.textContent=Math.round(o.v)})});
+
+// scroll progress bar
+if(!reduce)gsap.to('.pg',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+
+if(!reduce){
 // hero lines drift apart on scroll
 gsap.to('.l1',{xPercent:-10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 gsap.to('.l2',{xPercent:10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 gsap.to('.pf',{yPercent:35,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-
-// page colour shifts between sections
-$$('[data-bg]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:t=>t.isActive&&gsap.to(document.documentElement,{'--bg':s.dataset.bg,'--fg':s.dataset.fg,'--acc':s.dataset.acc,duration:.7,ease:'power2.out'})}));
 
 // ticker: loops, skews with scroll velocity
 const tk=gsap.to('.tk',{xPercent:-50,repeat:-1,duration:22,ease:'none'});
@@ -258,7 +314,7 @@ ScrollTrigger.addEventListener('scrollEnd',()=>{gsap.to(tk,{timeScale:1,duration
 // headings: letters swing up
 $$('.st').forEach(h=>gsap.from(words(h,true),{yPercent:100,opacity:0,stagger:.018,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}}));
 
-// about: portrait opens from a pill, text focuses in word by word
+// about
 gsap.fromTo('.about-photo',{clipPath:'inset(32% 26% 32% 26%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:'.about',start:'top 80%',end:'top 20%',scrub:true}});
 gsap.fromTo('.about-photo img',{scale:1.5},{scale:1,ease:'none',scrollTrigger:{trigger:'.about',start:'top 80%',end:'top 20%',scrub:true}});
 gsap.from(words($('.about-text')),{opacity:.08,filter:'blur(10px)',y:18,stagger:.04,ease:'none',scrollTrigger:{trigger:'.about-text',start:'top 80%',end:'bottom 60%',scrub:true}});
@@ -268,11 +324,10 @@ gsap.from('.fact > span',{y:20,opacity:0,stagger:.06,duration:.8,ease:'power3.ou
 // skills: rows slide in opposite directions as you scroll
 $$('.srow').forEach((r,i)=>gsap.fromTo($('.strip',r),{x:i%2?'-40%':'10%'},{x:i%2?'10%':'-40%',ease:'none',scrollTrigger:{trigger:r,start:'top bottom',end:'bottom top',scrub:.6}}));
 
-// projects: stacked cards that shrink back, screenshots drift inside frames
+// projects: stacked cards shrink back (desktop only); text and frame reveal
 const cards=$$('.proj');
 cards.forEach((c,i)=>{
- if(i<cards.length-1)gsap.to($('.pin',c),{scale:.92,opacity:.25,ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top bottom',end:'top top',scrub:true}});
- gsap.fromTo($('img',c),{yPercent:-9,scale:1.22},{yPercent:9,scale:1.22,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}});
+ if(stack&&i<cards.length-1)gsap.to($('.pin',c),{scale:.94,ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top bottom',end:'top top',scrub:true}});
  gsap.from($$('.pt > div > *,.go',c),{y:50,opacity:0,stagger:.09,duration:.9,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 55%'}});
  gsap.from($('.pim',c),{clipPath:'inset(0 100% 0 0)',duration:1.2,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 65%'}});
 });
@@ -284,19 +339,24 @@ $('.mail').addEventListener('mouseenter',()=>gsap.fromTo(mail,{y:0},{y:-16,durat
 gsap.to('.blob',{x:'random(-70,70)',y:'random(-60,60)',scale:'random(.92,1.15)',duration:'random(5,8)',repeat:-1,yoyo:true,ease:'sine.inOut'});
 gsap.to('.rings',{rotate:360,duration:110,repeat:-1,ease:'none'});
 gsap.to('.badge svg',{rotate:-360,duration:16,repeat:-1,ease:'none'});
-gsap.to('.pg',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
-gsap.from('.badge',{scale:0,rotate:-120,duration:1.4,ease:'back.out(1.8)',delay:3.6});
-$$('.num').forEach(el=>{const o={v:0};gsap.to(o,{v:+el.dataset.to,duration:2.2,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%'},onUpdate:()=>el.textContent=Math.round(o.v)})});
 gsap.from('.stats > div',{y:36,opacity:0,stagger:.12,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.stats',start:'top 88%'}});
 $$('.shead').forEach(h=>gsap.from(h,{opacity:0,y:24,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 92%'}}));
 gsap.from('.scard',{y:80,opacity:0,stagger:.14,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.scards',start:'top 86%'}});
 gsap.from('.clist li',{x:-50,opacity:0,stagger:.12,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.clist',start:'top 90%'}});
-gsap.from('.cols i',{scaleY:0,transformOrigin:'50% 0',stagger:.15,duration:2.2,ease:'expo.out',delay:2.8});
-gsap.from('.rule',{scaleX:0,transformOrigin:'0 50%',duration:2,ease:'expo.inOut',delay:3.2});
+
 if(fine){
  const cur=$('.cur'),qx=gsap.quickTo(cur,'x',{duration:.3}),qy=gsap.quickTo(cur,'y',{duration:.3});gsap.set(cur,{xPercent:-50,yPercent:-50});
  addEventListener('mousemove',e=>{gsap.set(cur,{opacity:1});qx(e.clientX);qy(e.clientY)});
  $$('a,.pim').forEach(a=>{const big=a.classList.contains('pim')?2.4:1.7;a.addEventListener('mouseenter',()=>gsap.to(cur,{scale:big,duration:.3}));a.addEventListener('mouseleave',()=>gsap.to(cur,{scale:1,duration:.3}))});
  $$('.mag').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.4,duration:.3})});b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.9,ease:'elastic.out(1,.4)'}))});
-}}
-</script></body></html>
+}
+}
+</script><div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged project image"><b role="button" tabindex="0" aria-label="Close">×</b><img alt=""></div>
+<script>(function(){var lb=document.getElementById("lb"),im=lb.querySelector("img"),x=lb.querySelector("b"),last=null;
+function close(){lb.classList.remove("on");document.body.style.overflow="";if(last)last.focus()}
+function show(p){var i=p.querySelector("img");last=p;im.src=i.src;im.alt=i.alt;lb.classList.add("on");document.body.style.overflow="hidden";x.focus()}
+document.querySelectorAll(".pim").forEach(function(p){p.tabIndex=0;p.setAttribute("role","button");p.setAttribute("aria-label","Enlarge: "+p.querySelector("img").alt);p.addEventListener("click",function(){show(p)});p.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();show(p)}})});
+lb.addEventListener("click",close);x.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();close()}});
+addEventListener("keydown",function(e){if(e.key==="Escape"&&lb.classList.contains("on"))close()})})();</script>
+<script>(function(){var u=document.querySelector(".fab .up");function t(){u.classList.toggle("show",window.scrollY>600)}addEventListener("scroll",t,{passive:true});t()})();</script>
+</body></html>
