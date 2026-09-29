@@ -178,6 +178,14 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .fab .up{background:#fff;color:#fa6601;opacity:0;visibility:hidden;transform:translateY(10px)}
 .fab .up.show{opacity:1;visibility:visible;transform:none}.fab .up.show:hover{transform:scale(1.1)}
 @media(prefers-reduced-motion:reduce){.fab a{transition:none}}
+
+/* --- fix: project card overflowing the screen on phones --- */
+.pin{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+.pin>*{min-width:0}
+.pim{position:relative;width:100%;max-width:100%}
+.pim img{position:absolute;left:0;right:0;top:30px;width:100%;height:calc(100% - 30px)}
+.pt h3,.pt p{overflow-wrap:anywhere}
+@media(max-width:899px){.pin{grid-template-columns:minmax(0,1fr)}.fab a{width:48px;height:48px}.fab .wa svg{width:26px;height:26px}}
 @media(hover:none){.cur{display:none}}
 </style></head><body>
 <div class="ld"><div class="ld-t"></div><div class="ld-b"></div><div class="ld-c"><div class="ld-n">000</div><div class="tag">James Chrispin Mligo</div></div></div>
