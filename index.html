@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>James Chrispin Mligo — Full Stack Developer</title>
-<meta name="description" content="James Chrispin Mligo — full stack developer in Dar es Salaam, Tanzania. Laravel, MySQL, PostgreSQL, React and Flutter.">
+<title>James Chrispin Mligo — Full Stack Web Developer &amp; Graphics Designer</title>
+<meta name="description" content="James Chrispin Mligo — full stack web developer and graphics designer in Dar es Salaam, Tanzania. Laravel, MySQL, PostgreSQL, React, Flutter and graphic design.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -83,7 +83,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin
 [data-num]:before{content:attr(data-num);position:absolute;right:4vw;top:6vh;font-size:clamp(9rem,28vw,28rem);line-height:.8;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1px var(--line);z-index:-1;pointer-events:none}
 .projects,.contact{position:relative}.contact{overflow:hidden}
 .contact>*:not(.blob):not(.cols){position:relative;z-index:1}
-.fact span:last-child{transition:transform .6s cubic-bezier(.16,1,.3,1)}.fact:hover span:last-child{transform:translateX(14px)}
+.fact span:last-child{transition:translate .6s cubic-bezier(.16,1,.3,1)}.fact:hover span:last-child{translate:14px 0}
 .pim{padding-top:30px;background:#fff;border-radius:10px;box-shadow:0 20px 40px -20px rgba(90,34,0,.55)}
 .pim:before{content:attr(data-url);position:absolute;top:0;left:0;right:0;height:30px;z-index:2;background-color:#fff;color:#a4632f;font-size:.62rem;letter-spacing:.06em;line-height:30px;padding:0 14px 0 66px;background-image:radial-gradient(circle at 16px 15px,#ff5f57 4px,transparent 5px),radial-gradient(circle at 32px 15px,#febc2e 4px,transparent 5px),radial-gradient(circle at 48px 15px,#28c840 4px,transparent 5px)}
 .pt .num{opacity:.95}
@@ -186,6 +186,26 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .pim img{position:absolute;left:0;right:0;top:30px;width:100%;height:calc(100% - 30px)}
 .pt h3,.pt p{overflow-wrap:anywhere}
 @media(max-width:899px){.pin{grid-template-columns:minmax(0,1fr)}.fab a{width:48px;height:48px}.fab .wa svg{width:26px;height:26px}}
+
+/* --- fix: mobile layout wider than the screen (About text cut off, stats/facts overflow) --- */
+.about-photo img,.portrait img{object-position:center 18%}
+@media(max-width:899px){
+ .hero-meta,.about,.scards,.cgrid,.fgrid,.pin{grid-template-columns:minmax(0,1fr)}
+ .hero-meta>*,.about>*,.scards>*,.cgrid>*,.fgrid>*{min-width:0}
+ .fact{grid-template-columns:6rem minmax(0,1fr)}
+ .clist a{grid-template-columns:5.5rem minmax(0,1fr) auto}
+ .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .stats>div{padding:1.2rem .7rem}
+ .stats b{font-size:clamp(1.7rem,8.5vw,2.6rem)}
+ .stats .tag{display:block;font-size:.62rem;letter-spacing:.08em;overflow-wrap:anywhere}
+ .about-text{font-size:1.2rem;line-height:1.5}
+ .mail{font-size:clamp(1.1rem,5.6vw,2rem)}
+}
+
+/* --- skills grid with 5 cards --- */
+.scards{grid-template-columns:repeat(6,minmax(0,1fr))}
+.scard{grid-column:span 2}.scard:nth-child(n+4){grid-column:span 3}
+@media(max-width:899px){.scards{grid-template-columns:minmax(0,1fr)}.scard,.scard:nth-child(n+4){grid-column:auto}}
 @media(hover:none){.cur{display:none}}
 </style></head><body>
 <div class="ld"><div class="ld-t"></div><div class="ld-b"></div><div class="ld-c"><div class="ld-n">000</div><div class="tag">James Chrispin Mligo</div></div></div>
@@ -200,30 +220,32 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 <div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <svg class="rings" viewBox="0 0 600 600" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="300" cy="300" r="290"/><circle cx="300" cy="300" r="225"/><circle cx="300" cy="300" r="160"/><circle cx="300" cy="300" r="95"/><path d="M5 300H595M300 5V595" opacity=".5"/></g></svg>
 <div class="pf"><div class="portrait"><img src="images/james.jpg" alt="James Chrispin Mligo"></div>
-<div class="badge" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#cp">Full stack developer • Dar es Salaam • Open to work •</textPath></text></svg><b>↓</b></div></div>
-<div class="tag">Full Stack Developer — Dar es Salaam, Tanzania · <span class="clock"></span></div>
+<div class="badge" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#cp">Web developer • Graphic designer • Open to work •</textPath></text></svg><b>↓</b></div></div>
+<div class="tag">Full Stack Web Developer &amp; Graphics Designer — Dar es Salaam, Tanzania · <span class="clock"></span></div>
 <h1 class="name" aria-label="James Mligo"><span class="big l1">James</span><span class="big l2">Mligo</span></h1>
 <div class="rule"></div><div class="hero-meta">
-<div class="role">Full Stack Developer</div>
+<div class="role">Full Stack Web Developer &amp; Graphics Designer</div>
 <p>I'm James Chrispin Mligo, a BSc ICT with Management graduate from Mzumbe University. I design and build full stack web applications — from database schema to the interface people actually touch.</p>
 <div class="cta"><a href="#projects" class="btn s mag">View Projects</a><a href="mailto:mligojames34@gmail.com" class="btn mag">Get in Touch</a></div>
 </div></header>
 
-<div class="ticker"><div class="tk"><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em></span></div>
+<div class="ticker"><div class="tk"><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em><b>Graphic Design</b><em>✦</em><b>Motion Graphics</b><em>✦</em><b>Meta Ads</b><em>✦</em></span><span><b>Laravel</b><em>✦</em><b>PHP</b><em>✦</em><b>MySQL</b><em>✦</em><b>PostgreSQL</b><em>✦</em><b>OJS Framework</b><em>✦</em><b>React</b><em>✦</em><b>Flutter</b><em>✦</em><b>REST APIs</b><em>✦</em><b>Graphic Design</b><em>✦</em><b>Motion Graphics</b><em>✦</em><b>Meta Ads</b><em>✦</em></span></div></div>
 
 <section class="sec" id="about" data-num="01" data-bg="#fffaf4" data-fg="#5a2200" data-acc="#fa6601">
 <div class="shead"><span class="tag">01 — About</span><span class="tag">Who I am</span></div><h2 class="st">Technology meets business</h2>
 <div class="about"><div class="about-photo"><img src="images/james.jpg" alt="James Chrispin Mligo"></div>
-<div><p class="about-text">I graduated in 2026 with a BSc in Information and Communication Technology with Management from Mzumbe University, and work as a full stack developer — comfortable moving between back-end architecture and front-end interfaces on the same project. My work sits at the intersection of technology and business: I've built systems for real companies, and I bring a business-minded lens to how software should actually solve a problem, not just demonstrate a technique. I'm currently expanding into React and Flutter.</p>
+<div><p class="about-text">I graduated in 2026 with a BSc in Information and Communication Technology with Management from Mzumbe University, and work as a full stack web developer and graphics designer — comfortable moving between back-end architecture and front-end interfaces on the same project. My work sits at the intersection of technology and business: I've built systems for real companies, and I bring a business-minded lens to how software should actually solve a problem, not just demonstrate a technique. I'm currently expanding into React and Flutter.</p>
 <div class="stats"><div><b class="num" data-to="3">0</b><span class="tag">Client projects</span></div><div><b class="num" data-to="4">0</b><span class="tag">Projects shipped</span></div><div><b class="num" data-to="2026">0</b><span class="tag">Graduated</span></div></div>
 <div class="facts"><div class="fact"><i></i><span class="tag">Based in</span><span>Dar es Salaam, Tanzania</span></div><div class="fact"><i></i><span class="tag">Education</span><span>BSc ICT with Management — Mzumbe University, 2026</span></div><div class="fact"><i></i><span class="tag">Core stack</span><span>Laravel, MySQL, PostgreSQL</span></div><div class="fact"><i></i><span class="tag">Learning</span><span>React, Flutter</span></div><div class="fact"><i></i><span class="tag">Available</span><span>Open to opportunities</span></div></div></div></div></section>
 
 <section class="sec" id="skills" data-num="02" data-bg="#fa6601" data-fg="#ffffff" data-acc="#ffffff" style="padding-inline:0">
 <div class="wrap"><div class="shead"><span class="tag">02 — Skills</span><span class="tag">Tools of the trade</span></div><h2 class="st">What I build with</h2></div>
-<div class="wrap"><div class="scards"><div class="scard"><div><span class="tag">01</span><h3>Back-End</h3></div><ul><li>Laravel (PHP)</li><li>OJS Framework</li><li>REST API Design</li></ul></div><div class="scard"><div><span class="tag">02</span><h3>Databases</h3></div><ul><li>MySQL</li><li>PostgreSQL</li><li>Schema Design</li></ul></div><div class="scard"><div><span class="tag">03</span><h3>Front-End &amp; Mobile</h3></div><ul><li>HTML / CSS / JS</li><li>React (learning)</li><li>Flutter (learning)</li></ul></div></div></div>
+<div class="wrap"><div class="scards"><div class="scard"><div><span class="tag">01</span><h3>Back-End</h3></div><ul><li>Laravel (PHP)</li><li>OJS Framework</li><li>REST API Design</li></ul></div><div class="scard"><div><span class="tag">02</span><h3>Databases</h3></div><ul><li>MySQL</li><li>PostgreSQL</li><li>Schema Design</li></ul></div><div class="scard"><div><span class="tag">03</span><h3>Front-End &amp; Mobile</h3></div><ul><li>HTML / CSS / JS</li><li>React (learning)</li><li>Flutter (learning)</li></ul></div><div class="scard"><div><span class="tag">04</span><h3>Graphic Design</h3></div><ul><li>Poster Design</li><li>Business Cards</li><li>Photo Editing</li><li>Motion Graphics</li></ul></div><div class="scard"><div><span class="tag">05</span><h3>Digital Marketing</h3></div><ul><li>Meta Ads Management</li></ul></div></div></div>
 <div class="srow" aria-hidden="true"><div class="tag">Back-End</div><div class="strip">Laravel (PHP) — OJS Framework — REST API Design —</div></div>
 <div class="srow" aria-hidden="true"><div class="tag">Databases</div><div class="strip">MySQL — PostgreSQL — Schema Design —</div></div>
-<div class="srow" aria-hidden="true"><div class="tag">Front-End &amp; Mobile</div><div class="strip">HTML / CSS / JS — React (learning) — Flutter (learning) —</div></div></section>
+<div class="srow" aria-hidden="true"><div class="tag">Front-End &amp; Mobile</div><div class="strip">HTML / CSS / JS — React (learning) — Flutter (learning) —</div></div>
+<div class="srow" aria-hidden="true"><div class="tag">Graphic Design</div><div class="strip">Poster Design — Business Cards — Photo Editing — Motion Graphics —</div></div>
+<div class="srow" aria-hidden="true"><div class="tag">Digital Marketing</div><div class="strip">Meta Ads Management —</div></div></section>
 
 <section class="projects" id="projects" data-num="03" data-bg="#fffaf4" data-fg="#5a2200" data-acc="#fa6601">
 <div class="wrap"><div class="shead"><span class="tag">03 — Projects</span><span class="tag">Selected work</span></div><h2 class="st">Selected work</h2></div>
@@ -237,7 +259,7 @@ h1,h2,h3,.disp{font-weight:500;letter-spacing:-.02em;line-height:1.02}
 <div class="blob b1"></div><div class="blob b2"></div><div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="shead"><span class="tag">04 — Let's work together</span><span class="tag">Contact</span></div><h2 class="st">Have a project in mind? Let's build it.</h2>
 <div class="cgrid"><div><a class="mail" href="mailto:mligojames34@gmail.com">mligojames34@gmail.com</a><p class="cnote">Open to new projects and opportunities. Tell me what you're building.</p></div>
 <ul class="clist"><li><a href="https://wa.me/255688787438"><span class="tag">WhatsApp</span><span>+255 688 787 438</span><i>↗</i></a></li><li><a href="tel:+255699794281"><span class="tag">Phone</span><span>+255 699 794 281</span><i>↗</i></a></li><li><a href="https://github.com/mligojames34-eng"><span class="tag">GitHub</span><span>mligojames34-eng</span><i>↗</i></a></li></ul></div>
-<footer><div class="fgrid"><div><span class="tag">James Chrispin Mligo</span><p>Full stack developer building practical, real-world software from Dar es Salaam, Tanzania.</p></div>
+<footer><div class="fgrid"><div><span class="tag">James Chrispin Mligo</span><p>Full stack web developer and graphics designer building practical, real-world work from Dar es Salaam, Tanzania.</p></div>
 <div><span class="tag">Navigate</span><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
 <div><span class="tag">Connect</span><a href="mailto:mligojames34@gmail.com">Email</a><a href="https://wa.me/255688787438">WhatsApp</a><a href="https://github.com/mligojames34-eng">GitHub</a></div></div>
 <div class="fbar"><span>© 2026 James Chrispin Mligo</span><span>Dar es Salaam · <span class="clock"></span></span><a href="#top">Back to top ↑</a></div></footer></section>
@@ -287,7 +309,7 @@ const intro=gsap.timeline({onComplete:()=>{document.body.style.overflow='';Scrol
 $('.ld').addEventListener('click',()=>intro.timeScale(4));
 
 // cycling role text
-const roles=['Full Stack Developer','Laravel Engineer','Business-minded Builder','Database Designer'];let ri=0;
+const roles=['Full Stack Web Developer & Graphics Designer','Laravel Engineer','Graphics Designer','Business-minded Builder','Database Designer'];let ri=0;
 gsap.delayedCall(2.8,function loop(){ri=(ri+1)%roles.length;scramble($('.role'),roles[ri],.9);gsap.delayedCall(2.8,loop)});
 
 // hero letters bend away from cursor
