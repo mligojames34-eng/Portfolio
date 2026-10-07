@@ -22,9 +22,8 @@ Full design and development of Bluewaveint.co.tz.
 
 🔹 InvestBridge (Final Year Project)
 Connects investors and enterprises using a recommendation algorithm.
-🔗 [https://github.com/mligojames34-eng/InvestBridge]
+🔗 https://github.com/mligojames34-eng/InvestBridge
 
 Contact
 • 📧 mligojames34@gmail.com
 • 📞 +255699794281
-• 🐙 GitHub: [this profile]
